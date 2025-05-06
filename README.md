@@ -52,3 +52,5 @@ export default tseslint.config({
   },
 })
 ```
+
+## Install npm install sass
