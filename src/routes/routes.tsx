@@ -1,11 +1,16 @@
-import "./App.sass";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "../features/home/home";
 
-function App() {
+function RoutesControll() {
   return (
     <>
-
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
 
-export default App;
+export default RoutesControll;

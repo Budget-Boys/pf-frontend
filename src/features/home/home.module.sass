@@ -1,0 +1,50 @@
+@use '../../styles/index.sass' as *
+
+main
+    margin-top: 80px
+    height: 200vh
+
+    .banner
+        height: 90vh
+        width: 100%
+        background: url('https://images.pexels.com/photos/6963848/pexels-photo-6963848.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+        background-size: cover
+        background-position: center
+        @include flexIten(column, end)
+        padding: 3rem 2rem
+        position: relative
+
+        .account_container
+            width: 100%
+            z-index: 1
+            .banner_title
+                margin-bottom: 1rem
+                text-align: center
+                h1
+                    color: $pink_second
+                    font-size: 36px
+                span
+                    color: $pink
+
+            .banner_account
+                background-color: $white
+                padding: 1.5rem
+                gap: 1rem
+                @include flexIten(column, center)
+                border-radius: 30px
+                font-size: 16px
+                font-weight: 600
+                text-align: center
+
+
+    .banner::before
+        content: ''
+        width: 100%
+        height: 100%
+        background: linear-gradient(1deg,rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%)
+        position: absolute
+        bottom: 0%
+
+@media (min-width: 968px)
+    main
+        margin-top: 90px

@@ -1,13 +1,12 @@
-import "./App.sass";
-import test from './assets/MoodBoard.png';
+import RoutesControll from "./routes/routes";
 
-function App() {
+const App: React.FC = () => {
+
   return (
     <>
-      <h1>Test</h1>
-      <img src={test} alt="" />
+      <RoutesControll />
     </>
-  );
-}
+    )
+};
 
 export default App;

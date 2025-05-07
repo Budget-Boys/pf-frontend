@@ -1,0 +1,21 @@
+@use '../../styles/index.sass' as *
+
+header
+    height: 80px
+    width: 100%
+    top: 0%
+    background-color: $white_low_opacity
+    @include flexIten(row, space-between)
+    padding: 1rem 
+    backdrop-filter: blur(20px)
+    z-index: 10
+    position: fixed
+
+    .logo
+        width: 30px
+
+@media (min-width: 968px)
+    header
+        height: 90px
+        padding: 1rem 3rem
+

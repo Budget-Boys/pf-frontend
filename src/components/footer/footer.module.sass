@@ -1,0 +1,19 @@
+@use '../../styles/index.sass' as *
+
+footer
+    height: 80vh
+    width: 100%
+    background-color: $black
+    @include flexIten(row, space-between)
+    padding: 1rem 
+    backdrop-filter: blur(50px)
+    z-index: 10
+
+
+    .logo
+        width: 30px
+
+@media (min-width: 968px)
+  footer
+    height: 40vh
+
