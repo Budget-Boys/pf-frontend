@@ -1,56 +1,46 @@
-# React + TypeScript + Vite
+# Projeto de Organização Financeira
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto de organização financeira construído com **React**, **TypeScript** e **Vite**. A aplicação permite aos usuários gerenciar suas finanças pessoais de maneira simples e eficaz. O frontend utiliza a biblioteca **MUI** para os componentes de interface e **SASS** para o gerenciamento de estilos.
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** - Biblioteca JavaScript para a construção da interface de usuário.
+- **TypeScript** - Superset de JavaScript que adiciona tipagem estática ao código.
+- **Vite** - Build tool rápida e moderna para desenvolvimento com React e TypeScript.
+- **MUI** - Biblioteca de componentes React para interfaces de usuário modernas e acessíveis.
+- **SASS** - Pré-processador CSS para escrever estilos de forma mais eficiente.
 
-## Expanding the ESLint configuration
+## Instalação
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Para rodar o projeto localmente, siga os passos abaixo:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/username/projeto-organizacao-financeira.git
+2. Navegue até o diretório do projeto:
+   ```bash
+    cd pf-frontend
+3. Instale as dependências:
+   ```bash
+    npm install
+4. Inicie o servidor de desenvolvimento:
+   ```bash
+   npm run dev
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Estrutura de Pastas   
+    src/
+    ├── assets/              # Imagens e arquivos estáticos
+    ├── components/          # Componentes reutilizáveis
+    ├── features/            # Funcionalidades ou módulos principais da aplicação
+    ├── services/            # Serviços de API
+    ├── hooks/               # Hooks customizados          
+    ├── styles/              # Variáveis globais e mixins do SASS
+    ├── App.tsx              # Componente raiz
+    └── main.tsx             # Ponto de entrada da aplicação
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Licença
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Este projeto é licenciado sob a **MIT License**.
 
-## Install npm install sass
+
+
