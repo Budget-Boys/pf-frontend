@@ -1,19 +1,59 @@
 @use '../../styles/index.sass' as *
 
+@mixin text-group($paragraph-color, $margin-bottom: 0)
+    @include flexIten(column, center)
+    margin-bottom: $margin-bottom
+
+    p
+        color: $paragraph-color
+
 footer
-    height: 80vh
-    width: 100%
-    background-color: $black
-    @include flexIten(row, space-between)
-    padding: 1rem 
-    backdrop-filter: blur(50px)
-    z-index: 10
+  height: 90vh
+  width: 100%
+  background-color: $black
+  @include flexIten(row, space-between)
+  padding: 3rem 1rem 2rem 1rem
+  backdrop-filter: blur(50px)
 
+  h3
+    color: $gray_second
+    margin-bottom: 1.25rem
+    font-size: 16px
 
-    .logo
-        width: 30px
+  .footer_container
+    height: 100%
+    @include flexIten(column, space-between)
+    text-align: center
+    gap: 2rem
+
+    .about_budgetboys
+      @include text-group($white_low_opacity, $margin-bottom: 2rem);
+
+    .developers_container
+      ul
+        @include flexIten(column, start )
+        li
+          color: $white_low_opacity
+
+    .midias_container
+      width: 100%
+        
+      ul
+        justify-content: center
+        gap: 3rem
+
+      i
+        font-size: 22px
+        color: $gray_second
+
+    .copy_container
+      margin-top: 1.5rem
+
+      p
+        color: $white_low_opacity
+        font-size: 10px
+        font-weight: 400
 
 @media (min-width: 968px)
   footer
     height: 40vh
-
