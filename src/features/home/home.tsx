@@ -3,6 +3,7 @@ import style from "./home.module.sass";
 import Header from "../../components/header/header";
 import Footer from "../../components/footer/footer";
 import Button from "../../components/button/button";
+import Inspiration from "./section_inspiration/inspiration";
 
 const Home: React.FC = () => {
   return (
@@ -23,6 +24,8 @@ const Home: React.FC = () => {
             </div>
           </div>
         </section>
+        <section className={style.pink_content} style={{ height: '100vh' }}></section>
+        <Inspiration/>
       </main>
       <Footer />
     </>

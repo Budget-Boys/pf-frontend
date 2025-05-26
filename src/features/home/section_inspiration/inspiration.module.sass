@@ -1,0 +1,25 @@
+@use '../../../styles/index.sass' as *
+
+.inspiration
+    background-color: $pink_second
+    padding: 3rem 2rem
+
+    .inspiration_container
+        @include flexIten(column, center)
+        gap: 2.5rem
+
+        .title_container h1
+            font-size: 46px
+            font-weight: 500
+
+    img
+        width: 100%
+        border-radius: 30px
+
+    .inspiration_text
+        background-color: $white_big_low_opacity
+        padding: 2rem
+        border-radius: 30px
+        p
+            font-size: 18px
+            margin-bottom: 1rem

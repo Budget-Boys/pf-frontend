@@ -7,7 +7,7 @@ const Header: React.FC = () => {
       <img className={style.logo} src=''></img>
       <ul>
         <li>
-          <Button label={"Quero ser Pink"} />
+          <Button label={"Quero ser Pink"} variant={""} />
         </li>
       </ul>
     </header>
