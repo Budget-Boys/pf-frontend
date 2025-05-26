@@ -1,5 +1,5 @@
 import style from "./inspiration.module.sass";
-import img from '../../../assets/2.png';
+import img from '../../../assets/images/phone.png';
 import Button from "../../../components/button/button";
 
 const Inspiration: React.FC = () => {
