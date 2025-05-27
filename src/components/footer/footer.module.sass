@@ -1,11 +1,11 @@
 @use '../../styles/index.sass' as *
 
 @mixin text-group($paragraph-color, $margin-bottom: 0)
-    @include flexIten(column, center)
     margin-bottom: $margin-bottom
+    @include flexIten(column, center)
 
     p
-        color: $paragraph-color
+      color: $paragraph-color
 
 footer
   height: 90vh
@@ -27,7 +27,7 @@ footer
     gap: 2rem
 
     .about_budgetboys
-      @include text-group($white_low_opacity, $margin-bottom: 2rem);
+      @include text-group($white_low_opacity, 2rem)
 
     .developers_container
       ul
@@ -35,9 +35,11 @@ footer
         li
           color: $white_low_opacity
 
+    img
+      width: 6.25rem
+
     .midias_container
       width: 100%
-        
       ul
         justify-content: center
         gap: 3rem
@@ -56,4 +58,26 @@ footer
 
 @media (min-width: 968px)
   footer
-    height: 40vh
+    height: 70vh
+    padding: 3rem 2rem 1rem 2rem
+
+    .footer_container
+      height: 100%
+      width: 100%
+      @include flexIten(column, space-between)
+
+    .footer_bottom
+      width: 100%
+      @include flexIten(row, space-between)
+      
+      .logo_container
+        width: 20%
+        display: flex
+
+      .midias_container
+        width: 60%
+        justify-content: center
+
+      .copy_container
+        width: 20%
+        text-align: right

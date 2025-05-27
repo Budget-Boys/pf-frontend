@@ -1,14 +1,17 @@
-import style from './footer.module.sass';
-
+import style from "./footer.module.sass";
+import logo from "../../assets/logo/logo_noturno.png";
 const Footer: React.FC = () => {
-
   return (
     <footer>
       <div className={style.footer_container}>
         <div className={style.footer_top}>
           <div className={style.about_budgetboys}>
             <h3>Budget Boys</h3>
-            <p>A Budget Boys é a união de jovens estudantes apaixonados por tecnologia, com o objetivo de melhorar o mundo através de soluções inovadoras e acessíveis.</p>
+            <p>
+              A Budget Boys é a união de jovens estudantes apaixonados por
+              tecnologia, com o objetivo de melhorar o mundo através de soluções
+              inovadoras e acessíveis.
+            </p>
           </div>
 
           <div className={style.developers_container}>
@@ -25,22 +28,37 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className={style.footer_bottom}>
+          <div className={style.logo_container}>
+            <img src={logo} alt="logo" />
+          </div>
+
           <div className={style.midias_container}>
             <h3>Redes Sociais</h3>
             <ul>
-              <li><i className="fi fi-brands-github"></i></li>
-              <li><i className="fi fi-brands-instagram"></i></li>
-              <li><i className="fi fi-brands-youtube"></i></li>
-              <li><i className="fi fi-brands-twitter-alt"></i></li>
+              <li>
+                <i className="fi fi-brands-github"></i>
+              </li>
+              <li>
+                <i className="fi fi-brands-instagram"></i>
+              </li>
+              <li>
+                <i className="fi fi-brands-youtube"></i>
+              </li>
+              <li>
+                <i className="fi fi-brands-twitter-alt"></i>
+              </li>
             </ul>
           </div>
           <div className={style.copy_container}>
-            <p>© 2025 Budget Boys Ltda. - Serviços Financeiros. 00.000.000/0001-00. Rua Fictícia, 123 - Cidade, UF - 00000-000.</p>
+            <p>
+              © 2025 Budget Boys Ltda. - Serviços Financeiros.
+              00.000.000/0001-00. Rua Fictícia, 123 - Cidade, UF - 00000-000.
+            </p>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 };
 
 export default Footer;
