@@ -4,6 +4,7 @@ import Footer from "../../components/footer/footer";
 import Button from "../../components/button/button";
 import Inspiration from "./section_inspiration/inspiration";
 import Features from "./section_features/features";
+import Faq from "./section_faq/faq";
 
 const Home: React.FC = () => {
   return (
@@ -28,6 +29,7 @@ const Home: React.FC = () => {
         </section>
         <Features />
         <Inspiration />
+        <Faq />
       </main>
       <Footer />
     </>

@@ -1,0 +1,39 @@
+@use '../../../styles/index.sass' as *
+
+.faq
+    padding: 3rem 2rem
+    .faq_container
+        .title_container h1
+            font-size: 40px
+            font-weight: 500
+            margin-bottom: 3rem
+
+        .accordion_item
+            border-radius: 15px
+            background-color: $white
+            border: 0
+            margin-bottom: 12px
+
+            &::before
+                display: none
+
+            &.Mui-expanded
+                margin-bottom: 12px
+
+            .accordion_summary
+                padding: 1rem
+                &.Mui-expanded
+                    transform: rotate(45deg)
+
+            .accordion_question
+                font-weight: 700
+                color: $black
+                flex-grow: 1
+
+            .accordion_details
+                padding: 0 20px 16px !important
+
+            .accordion_answer
+                color: $black_second
+                font-size: 0.95em
+                line-height: 1.5
