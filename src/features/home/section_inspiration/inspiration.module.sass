@@ -5,22 +5,37 @@
     padding: 3rem 2rem
 
     .inspiration_container
+        .inspiration_module
+            @include flexIten(column, center)
+            gap: 3rem
+
+            .title_container h1
+                font-size: 40px
+                font-weight: 500
+
+            .inspiration_img
+                width: 100%
+                border-radius: 30px
+
+            .inspiration_text
+                background-color: $white_big_low_opacity
+                padding: 2rem
+                border-radius: 30px
+                p
+                    font-size: 18px
+                    margin-bottom: 1rem
+
+        .inspiration_image_rigth
+            display: none
+
+@media (min-width: 968px)
+    .inspiration
         @include flexIten(column, center)
-        gap: 3rem
+        .inspiration_container
+            width: 70%
 
-        .title_container h1
-            font-size: 40px
-            font-weight: 500
-            
+            .inspiration_img
+                display: none
 
-    img
-        width: 100%
-        border-radius: 30px
-
-    .inspiration_text
-        background-color: $white_big_low_opacity
-        padding: 2rem
-        border-radius: 30px
-        p
-            font-size: 18px
-            margin-bottom: 1rem
+            .inspiration_image_rigth
+                display: block

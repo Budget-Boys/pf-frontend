@@ -16,3 +16,19 @@
 
         .features_text
             text-align: center
+
+@media (min-width: 968px)
+    .features
+        margin-top: 10rem
+
+        .features_about
+            @include flexIten(column, center)
+            margin-bottom: 5rem
+            gap: 3rem
+
+            img
+                width: 50%
+                border-radius: 30px
+        .title_container h1
+            font-size: 40px
+            font-weight: 500

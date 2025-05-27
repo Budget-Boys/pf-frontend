@@ -19,17 +19,14 @@ $blue_second: #2C3252
 $black: #161616
 $black_second: #202020
 
-
 @mixin flexIten($direction, $position)
     flex-direction: $direction
     display: flex
     align-items: center
     justify-content: $position
 
-
-
 *
-    font-family: $font-family
+    font-family: $font-family !important
     margin: 0
     padding: 0
     border: 0
@@ -43,3 +40,11 @@ body
 ul
     display: flex
     list-style: none
+
+@media (min-width: 968px)
+    section
+        min-height: 100vh
+        padding: 10rem 0
+    
+        
+   

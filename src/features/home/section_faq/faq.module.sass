@@ -2,38 +2,68 @@
 
 .faq
     padding: 3rem 2rem
+
     .faq_container
         .title_container h1
             font-size: 40px
             font-weight: 500
             margin-bottom: 3rem
 
-        .accordion_item
-            border-radius: 15px
-            background-color: $white
-            border: 0
-            margin-bottom: 12px
-
-            &::before
-                display: none
-
-            &.Mui-expanded
+        .accordion_container
+            .accordion_item
+                border-radius: 15px
+                background-color: $white
+                border: 0
                 margin-bottom: 12px
 
-            .accordion_summary
-                padding: 1rem
+                &::before
+                    display: none
+
                 &.Mui-expanded
-                    transform: rotate(45deg)
+                    margin-bottom: 12px
 
-            .accordion_question
-                font-weight: 700
-                color: $black
-                flex-grow: 1
+                .accordion_summary
+                    padding: 1rem
+                    &.Mui-expanded
+                        transform: rotate(45deg)
 
-            .accordion_details
-                padding: 0 20px 16px !important
+                .accordion_question
+                    font-weight: 700
+                    color: $black
+                    font-size: 14px
+                    width: 95%
 
-            .accordion_answer
-                color: $black_second
-                font-size: 0.95em
-                line-height: 1.5
+                .accordion_details
+                    padding: 0 1.5rem 2rem
+
+                .accordion_answer
+                    color: $black_second
+                    font-size: 14px
+
+@media (min-width: 968px)
+    .faq
+        @include flexIten(column, center)
+        .faq_container
+            width: 70%
+            @include flexIten(row , space-between)
+            align-items: start
+            .title_container h1
+                font-size: 56px
+                margin: 0
+
+            .accordion_container
+                flex-direction: column
+                display: flex
+                width: 50%
+                .accordion_item
+                    border-radius: 30px
+                    .accordion_summary
+                        padding: 2rem
+                    .accordion_question
+                        font-size: 24px
+
+                    .accordion_details
+                        padding: 0 2rem 2rem
+
+                    .accordion_answer
+                        font-size: 16px

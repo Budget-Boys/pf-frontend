@@ -5,6 +5,9 @@ import Button from "../../components/button/button";
 import Inspiration from "./section_inspiration/inspiration";
 import Features from "./section_features/features";
 import Faq from "./section_faq/faq";
+import Responsive from "./section_responsive/responsive";
+
+
 
 const Home: React.FC = () => {
   return (
@@ -28,6 +31,7 @@ const Home: React.FC = () => {
           </div>
         </section>
         <Features />
+        <Responsive />
         <Inspiration />
         <Faq />
       </main>
