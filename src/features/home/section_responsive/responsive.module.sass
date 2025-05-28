@@ -27,14 +27,21 @@
         .inspiration_image_rigth
             display: none
 
-@media (min-width: 968px)
+@media (min-width: 768px)
     .responsive
         @include flexIten(column, center)
         .responsive_container
             width: 70%
+            @include flexIten(row-reverse, space-between)
+            .responsive_module
+                width: 50%
+                .title_container h1
+                    font-size: 54px
 
-            .responsive_img
-                display: none
+                .responsive_img
+                    display: none
 
-            .responsive_image_rigth
-                display: block
+            .responsive_img_outside
+                .responsive_img
+                    width: 358px
+                    border-radius: 30px

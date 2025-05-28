@@ -21,6 +21,9 @@ const Responsive: React.FC = () => {
             </p>
           </div>
         </div>
+        <div className={style.responsive_img_outside}>
+          <img src={img} alt="imagem" className={style.responsive_img} />
+        </div>
       </div>
     </section>
   );

@@ -39,16 +39,26 @@
                 .accordion_answer
                     color: $black_second
                     font-size: 14px
+@media (min-width: 992px)
+    .faq
+        .faq_container
+            .title_container h1
+                font-size: 56px
 
-@media (min-width: 968px)
+                .accordion_item
+                    .accordion_question
+                        font-size: 24px
+                        
+@media (min-width: 768px)
     .faq
         @include flexIten(column, center)
         .faq_container
             width: 70%
             @include flexIten(row , space-between)
             align-items: start
+            
             .title_container h1
-                font-size: 56px
+                font-size: 48px
                 margin: 0
 
             .accordion_container
@@ -56,14 +66,15 @@
                 display: flex
                 width: 50%
                 .accordion_item
-                    border-radius: 30px
+                    .accordion_question
+                        font-size: 18px
+                        border-radius: 30px
                     .accordion_summary
                         padding: 2rem
-                    .accordion_question
-                        font-size: 24px
-
                     .accordion_details
                         padding: 0 2rem 2rem
 
                     .accordion_answer
                         font-size: 16px
+
+

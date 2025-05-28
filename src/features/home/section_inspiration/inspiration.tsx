@@ -26,9 +26,11 @@ const Inspiration: React.FC = () => {
           </div>
           <Button label={"Quero ser Pink"} variant={"banner"} />
         </div>
-  
+        <div className={style.inspiration_img_outside}>
+          <img src={img} alt="imagem" className={style.inspiration_img}/>
+        </div>
       </div>
-    </section>
+    </section >
   );
 };
 export default Inspiration;
