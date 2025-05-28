@@ -1,0 +1,19 @@
+@use '../../styles/index.sass' as *
+.account_container
+    height: 100vh
+    padding: 3rem 2rem
+    @include flexIten(column, end)
+    background-color: $white
+    
+    .account_close
+        position: absolute
+        right: 5%
+        top: 3%
+
+        i
+            border-radius: 50%
+            width: 45px
+            font-size: 32px
+            height: 45px
+            color: $pink
+            background-color: $gray_second

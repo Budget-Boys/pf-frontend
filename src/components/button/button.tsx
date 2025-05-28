@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { theme } from "../../styles/themes";
 import { Drawer } from "@mui/material";
+import Account from "../../features/account/account";
 
 interface ButtonProps {
   label: string;
@@ -65,10 +66,7 @@ const Button: React.FC<ButtonProps> = ({ label, variant }) => {
 
       {/* Drawer do MUI */}
       <Drawer anchor="bottom" open={open} onClose={toggleDrawer}>
-        <div style={{ width: "100%", padding: "20px" }}>
-          <h2>Este é o conteúdo do Drawer</h2>
-          <p>Você pode colocar qualquer conteúdo aqui!</p>
-        </div>
+        <Account />
       </Drawer>
     </>
   );
