@@ -1,46 +1,43 @@
-# Projeto de Organização Financeira
+# 🎨 Pull Request – pf-frontend
 
-Este é um projeto de organização financeira construído com **React**, **TypeScript** e **Vite**. A aplicação permite aos usuários gerenciar suas finanças pessoais de maneira simples e eficaz. O frontend utiliza a biblioteca **MUI** para os componentes de interface e **SASS** para o gerenciamento de estilos.
+## 📋 Descrição do que foi feito
 
-## Tecnologias Utilizadas
+Esta Pull Request marca a **criação inicial da página Home** do projeto **PinkFinances**, com foco em sua responsividade e na apresentação visual da marca.
 
-- **React** - Biblioteca JavaScript para a construção da interface de usuário.
-- **TypeScript** - Superset de JavaScript que adiciona tipagem estática ao código.
-- **Vite** - Build tool rápida e moderna para desenvolvimento com React e TypeScript.
-- **MUI** - Biblioteca de componentes React para interfaces de usuário modernas e acessíveis.
-- **SASS** - Pré-processador CSS para escrever estilos de forma mais eficiente.
+As principais entregas incluem:
 
-## Instalação
+* **Estrutura Base da Página Home**: Implementação do layout inicial da página principal do projeto.
+* **Design Responsivo**: A página foi desenvolvida para se adaptar a diferentes tamanhos de tela, garantindo uma ótima experiência de usuário em dispositivos móveis, tablets e desktops.
+* **Integração da Logo PinkFinances**: A logo oficial do projeto foi devidamente inserida na página, consolidando a identidade visual.
+* **Seção de Apresentação do Projeto**: Inclusão de um texto descritivo que explica o que é o PinkFinances e seu propósito.
+* **Área de Chamada para Ação (CTA)**: Criação de uma seção convidando o usuário a criar sua conta, servindo como ponto de entrada para o processo de cadastro.
 
-Para rodar o projeto localmente, siga os passos abaixo:
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/98228e6d-d064-4e83-a37d-1d97c809a1d9" alt="Logo PinkFinances" width="200" />
+</p>
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/username/projeto-organizacao-financeira.git
-2. Navegue até o diretório do projeto:
-   ```bash
-    cd pf-frontend
-3. Instale as dependências:
-   ```bash
-    npm install
-4. Inicie o servidor de desenvolvimento:
-   ```bash
-   npm run dev
+---
 
-## Estrutura de Pastas   
-    src/
-    ├── assets/              # Imagens e arquivos estáticos
-    ├── components/          # Componentes reutilizáveis
-    ├── features/            # Funcionalidades ou módulos principais da aplicação
-    ├── services/            # Serviços de API
-    ├── hooks/               # Hooks customizados          
-    ├── styles/              # Variáveis globais e mixins do SASS
-    ├── App.tsx              # Componente raiz
-    └── main.tsx             # Ponto de entrada da aplicação
+## 🧪 Como testar
 
-### Licença
+1. Instale as dependências (se necessário):
 
-Este projeto é licenciado sob a **MIT License**.
+```bash
+npm install
+```
 
+2. Rode o projeto localmente:
 
+```bash
+npm run dev
+```
 
+## ✅ Checklist
+
+- [x] Componentes seguem o padrão de escrita com TypeScript
+- [x] Seguir o padrão Mobile First 
+- [x] Responsividade testada em tamanhos diferentes de tela
+- [x] Nenhum dado sensível foi exposto
+- [x] Não quebrou rotas ou navegação
+
+---
