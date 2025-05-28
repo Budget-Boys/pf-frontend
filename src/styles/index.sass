@@ -41,9 +41,20 @@ ul
     display: flex
     list-style: none
 
-@media (min-width: 968px)
-section
-    min-height: 100vh
-    padding: 10rem 0 !important
-    
+::-webkit-scrollbar
+    width: 5px
+   
+::-webkit-scrollbar-track
+    background: $white
 
+::-webkit-scrollbar-thumb
+    background: $pink // Cor do polegar
+    border-radius: 15px
+
+    &:hover
+        background: $blue 
+
+@media (min-width: 992px)
+    section
+        min-height: 100vh
+        padding: 10rem 0rem !important

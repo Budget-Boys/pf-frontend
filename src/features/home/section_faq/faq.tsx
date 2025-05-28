@@ -49,7 +49,7 @@ const Faq: React.FC = () => {
     <section className={style.faq}>
       <div className={style.faq_container}>
         <div className={style.title_container}>
-          <h1> Ficou com duvida? </h1>
+          <h1> Ficou com alguma dúvida?</h1>
         </div>
         <div className={style.accordion_container}>
           {faqs.map((faq) => (

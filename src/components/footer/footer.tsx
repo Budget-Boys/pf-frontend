@@ -8,9 +8,14 @@ const Footer: React.FC = () => {
           <div className={style.about_budgetboys}>
             <h3>Budget Boys</h3>
             <p>
-              A Budget Boys é a união de jovens estudantes apaixonados por
-              tecnologia, com o objetivo de melhorar o mundo através de soluções
-              inovadoras e acessíveis.
+              A Budget Boys é a união de jovens estudantes do IFMG (Instituto
+              Federal de Minas Gerais), movidos por uma paixão em comum:
+              transformar o mundo através da tecnologia. Acreditamos que a
+              inovação pode e deve ser acessível, e é com esse espírito que
+              desenvolvemos soluções para melhorar a vida das pessoas e impactar
+              positivamente a sociedade. Mais do que apenas um projeto, somos a
+              materialização da nossa visão de um futuro mais eficiente e
+              inclusivo.
             </p>
           </div>
 

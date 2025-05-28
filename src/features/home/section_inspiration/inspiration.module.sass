@@ -25,27 +25,44 @@
                     font-size: 18px
                     margin-bottom: 1rem
 
-        .inspiration_image_rigth
+        .inspiration_img_outside
             display: none
 
-@media (min-width: 768px)
+@media (min-width: 992px)
     .inspiration
         @include flexIten(column, center)
         .inspiration_container
-            width: 70%
+            width: 90%
             @include flexIten(row, space-between)
 
             .inspiration_module
                 width: 50%
 
-                .title_container h1
-                    font-size: 54px
-                    text-align: start
+                .title_container
+                    width: 100%
+                    h1
+                        font-size: 48px
 
                 .inspiration_img
                     display: none
 
             .inspiration_img_outside
+                display: block
                 .inspiration_img
-                    width: 358px
+                    width: 425px
+                    border-radius: 30px
+
+@media (min-width: 1200px)
+    .inspiration
+        .inspiration_container
+            width: 70%
+            gap: 2rem
+            .inspiration_module
+                width: 45%
+                .title_container h1
+                    font-size: 56px
+
+            .inspiration_img_outside
+                .inspiration_img
+                    width: 480px
                     border-radius: 30px

@@ -63,21 +63,20 @@ main
             height: 80vh
             background-size: 100%
             align-items: start
-            padding: 6rem 10rem !important
+            padding: 0rem 2.5rem !important
+            
             .account_container
-                width: auto
-
                 .banner_title
                     text-align: start
                     h1
-                        font-size: 90px
-                        width: 90%
+                        font-size: 72px
+                        width: 80%
                         word-break: break-word
                         color: $blue
 
                 .banner_account
                     text-align: start
-                    width: 55%
+                    width: 60%
         .banner::before
             background: transparent
 
@@ -86,3 +85,12 @@ main
             width: 50%
             right: 0%
             border-radius: 0 0 0 40px
+
+@media (min-width: 1200px)
+    main
+        .banner
+            padding: 0rem 8rem !important
+            .account_container
+                .banner_title
+                    h1
+                        font-size: 90px
