@@ -1,5 +1,6 @@
 import style from "./footer.module.sass";
 import logo from "../../assets/logo/logo_noturno.png";
+import { Link } from "react-router-dom";
 const Footer: React.FC = () => {
   return (
     <footer>
@@ -41,16 +42,24 @@ const Footer: React.FC = () => {
             <h3>Redes Sociais</h3>
             <ul>
               <li>
-                <i className="fi fi-brands-github"></i>
+                <Link to={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}>
+                  <i className="fi fi-brands-github"></i>
+                </Link>
               </li>
               <li>
-                <i className="fi fi-brands-instagram"></i>
+                <Link to={"https://www.youtube.com/watch?v=8rn1t8_b0S8"}>
+                  <i className="fi fi-brands-instagram"></i>
+                </Link>
               </li>
               <li>
-                <i className="fi fi-brands-youtube"></i>
+                <Link to={"https://www.youtube.com/watch?v=YOz7dsnjS8U"}>
+                  <i className="fi fi-brands-youtube"></i>
+                </Link>
               </li>
               <li>
-                <i className="fi fi-brands-twitter-alt"></i>
+                <Link to={"https://www.youtube.com/watch?v=mz3tnaCh5aQ"}>
+                  <i className="fi fi-brands-twitter-alt"></i>
+                </Link>
               </li>
             </ul>
           </div>
