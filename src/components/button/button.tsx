@@ -65,8 +65,8 @@ const Button: React.FC<ButtonProps> = ({ label, variant }) => {
       </ButtonStyled>
 
       {/* Drawer do MUI */}
-      <Drawer anchor="bottom" open={open} onClose={toggleDrawer}>
-        <Account />
+      <Drawer anchor="bottom" open={open} onClose={toggleDrawer} >
+        <Account route={""}/>
       </Drawer>
     </>
   );
