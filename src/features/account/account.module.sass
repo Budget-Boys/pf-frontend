@@ -1,8 +1,8 @@
 @use '../../styles/index.sass' as *
 .account_container
-    height: 100vh
-    padding: 3rem 2rem
-    @include flexIten(column, end)
+    min-height: 100vh
+    padding: 3rem 2rem 2rem
+    @include flexIten(column, space-between)
     background-color: $white
     
     .account_close
@@ -17,3 +17,16 @@
             height: 45px
             color: $pink
             background-color: $gray_second
+
+    .account_outlet
+        width: 100%
+        padding: 1rem 0
+
+    .exercise_type
+        @include flexIten(column, center)
+        gap: 2rem
+        margin-top: 3rem
+        a
+            font-size: 18px
+            color: $pink
+            font-weight: 700

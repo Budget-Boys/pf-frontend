@@ -6,6 +6,7 @@ import Inspiration from "./section_inspiration/inspiration";
 import Features from "./section_features/features";
 import Faq from "./section_faq/faq";
 import Responsive from "./section_responsive/responsive";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -26,7 +27,7 @@ const Home: React.FC = () => {
                 Venha fazer parte desse grande ecossistema e organizar a sua
                 vida!
               </p>
-              <Button label={"Quero ser Pink"} variant={"banner"} />
+              <NavLink to="register"><Button label={"Quero ser Pink"} variant={"banner"} /></NavLink>
             </div>
           </div>
         </section>
