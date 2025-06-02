@@ -9,7 +9,7 @@ const Login: React.FC = () => {
           <h1> Retorne ao gerenciamento da sua finanças </h1>
         </div>
         <img src={img} alt="" />
-        <form action="">
+        <form action="" id="login-form">
           <Input placeholder={"Nome:"} icon={"piggy-bank"} type={"text"} />
           <Input placeholder={"Senha:"} icon={"vault"} type={"password"} />
         </form>

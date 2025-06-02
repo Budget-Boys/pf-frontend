@@ -2,9 +2,8 @@
 .account_container
     min-height: 100vh
     padding: 3rem 2rem 2rem
-    @include flexIten(column, space-between)
     background-color: $white
-    
+
     .account_close
         position: absolute
         right: 5%
@@ -18,15 +17,94 @@
             color: $pink
             background-color: $gray_second
 
-    .account_outlet
-        width: 100%
-        padding: 1rem 0
+    .img_background
+        display: none
 
-    .exercise_type
-        @include flexIten(column, center)
-        gap: 2rem
-        margin-top: 3rem
-        a
-            font-size: 18px
-            color: $pink
-            font-weight: 700
+    .account_rigth
+        @include flexIten(column, space-between)
+        gap: 1.5rem
+
+        .account_outlet
+            width: 100%
+
+        .exercise_type
+            width: 100%
+            @include flexIten(column-reverse, center)
+            gap: 1rem
+            margin-top: 1.5rem
+
+            a
+                font-size: 18px
+                color: $pink
+                font-weight: 700
+
+            button
+                width: 100%
+                padding: 1rem 2rem
+                height: 71px
+                background-color: $pink
+                border-radius: 50px
+                font-size: 18px
+                font-weight: 600
+                color: $white
+                cursor: pointer
+                @include flexIten(row , space-between)
+
+                i
+                    color: $white
+
+@media (min-width: 992px)
+    .account_container
+        @include flexIten(row , space-between)
+        flex-direction: row
+        padding: 0
+        height: 100vh
+        .account_close
+            right: 3%
+
+        .img_background
+            width: 50%
+            height: 100%
+            background-image: url('../../assets/images/teste2-o.png')
+            display: block
+            background-size: cover
+
+        .account_rigth
+            width: 50%
+            height: 100%
+            @include flexIten(column, space-between)
+            gap: 5rem
+            padding: 4.5rem 2.5rem 2rem
+
+            .account_outlet
+                width: 100%
+                padding: 0
+
+            .exercise_type
+                @include flexIten(row, space-between)
+                width: 100%
+
+                button
+                    width: 60%
+
+@media (min-width: 1200px)
+    .account_container
+        padding: 1rem
+        .account_close
+            right: 2%
+
+        .img_background
+            background-image: url('../../assets/images/teste.png')
+            background-size: cover
+            border-radius: 25px
+
+        .account_rigth
+            width: 50%
+            height: 100vh
+            @include flexIten(column, space-between)
+            gap: 5rem
+            padding: 4.5rem 5rem 2rem
+
+            .exercise_type
+                button
+                    width: 50%

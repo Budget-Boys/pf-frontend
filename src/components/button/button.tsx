@@ -44,7 +44,7 @@ const ButtonStyled = styled.button<{ variant?: string }>`
     }
   }}
 
-  @media (min-width: 968px) {
+  @media (min-width: 992px) {
     padding: 14px 30px;
     font-size: 18px;
   }
@@ -66,7 +66,7 @@ const Button: React.FC<ButtonProps> = ({ label, variant }) => {
 
       {/* Drawer do MUI */}
       <Drawer anchor="bottom" open={open} onClose={toggleDrawer} >
-        <Account route={""}/>
+        <Account route={"register"}/>
       </Drawer>
     </>
   );
