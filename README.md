@@ -43,6 +43,4 @@ Para rodar o projeto localmente, siga os passos abaixo:
     └── main.tsx             # Ponto de entrada da aplicação
 
 ### 📜 Licença
-
 Este projeto é licenciado sob a **MIT License**. 📝
-
