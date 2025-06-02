@@ -1,0 +1,54 @@
+@use '../../../styles/index.sass' as *
+
+.features
+    padding: 3rem 2rem
+    .features_about
+        @include flexIten(column, center)
+        margin-bottom: 5rem
+        gap: 3rem
+        .title_container h1
+            font-size: 40px
+            font-weight: 500
+
+        .features_img
+            background: url('../../../assets/images/wallet.png')
+            background-size: cover
+            background-position: center
+            background-repeat: no-repeat
+            width: 100%
+            height: 329px
+            border-radius: 30px
+
+        .features_text
+            text-align: center
+
+@media (min-width: 992px)
+    .features
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-top: 10rem
+        .features_container
+            width: 90%
+
+            .features_about
+                @include flexIten(column, center)
+                margin-bottom: 15rem
+                gap: 3rem
+
+                .features_img
+                    width: 100%
+                    height: 429px
+                    background: url('../../../assets/images/wallet_2.png')
+                    background-position: center
+                .features_text
+                   font-size: 18px
+                   
+                .title_container h1
+                    font-size: 40px
+                    font-weight: 500
+
+@media (min-width: 1200px)
+    .features
+        .features_container
+            width: 70%

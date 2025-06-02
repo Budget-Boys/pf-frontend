@@ -5,6 +5,7 @@ $font-family: 'DM Sans'
 /*colors
 $white: #FFF
 $white_low_opacity: #ffffff99
+$white_big_low_opacity: #ffffff7a
 
 $gray: #E7E7E7
 $gray_second: #F4F4F4
@@ -14,7 +15,9 @@ $pink_second: #FFE7EF
 
 $blue: #24263B
 $blue_second: #2C3252
+
 $black: #161616
+$black_second: #202020
 
 @mixin flexIten($direction, $position)
     flex-direction: $direction
@@ -23,7 +26,7 @@ $black: #161616
     justify-content: $position
 
 *
-    font-family: $font-family
+    font-family: $font-family !important
     margin: 0
     padding: 0
     border: 0
@@ -37,3 +40,21 @@ body
 ul
     display: flex
     list-style: none
+
+::-webkit-scrollbar
+    width: 5px
+   
+::-webkit-scrollbar-track
+    background: $white
+
+::-webkit-scrollbar-thumb
+    background: $pink // Cor do polegar
+    border-radius: 15px
+
+    &:hover
+        background: $blue 
+
+@media (min-width: 992px)
+    section
+        min-height: 100vh
+        padding: 10rem 0rem !important

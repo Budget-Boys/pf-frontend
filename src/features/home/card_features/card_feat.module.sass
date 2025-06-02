@@ -1,0 +1,22 @@
+@use '../../../styles/index.sass' as *
+
+.card_body
+    padding: 2rem
+    width: 100%
+    text-align: center
+    background-color: $white
+    border-radius: 25px
+    @include flexIten(column, center)
+    gap: 2rem
+    min-height: 500px
+    img
+        width: 100%
+        border-radius: 30px
+
+@media (min-width: 992px)
+    .card_body
+        min-height: 535px
+
+@media (min-width: 1200px)
+    .card_body
+        min-height: 570px

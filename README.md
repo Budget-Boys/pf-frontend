@@ -16,7 +16,7 @@ Para rodar o projeto localmente, siga os passos abaixo:
 
 1.  Clone o repositório:
     ```bash
-    git clone [https://github.com/username/projeto-organizacao-financeira.git](https://github.com/username/projeto-organizacao-financeira.git)
+    git clone https://github.com/username/projeto-organizacao-financeira.git
     ```
 2.  Navegue até o diretório do projeto:
     ```bash
@@ -43,5 +43,4 @@ Para rodar o projeto localmente, siga os passos abaixo:
     └── main.tsx             # Ponto de entrada da aplicação
 
 ### 📜 Licença
-
 Este projeto é licenciado sob a **MIT License**. 📝

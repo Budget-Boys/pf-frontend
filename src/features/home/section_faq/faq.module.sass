@@ -1,0 +1,81 @@
+@use '../../../styles/index.sass' as *
+
+.faq
+    padding: 3rem 2rem
+
+    .faq_container
+        .title_container h1
+            font-size: 40px
+            font-weight: 500
+            margin-bottom: 3rem
+
+        .accordion_container
+            .accordion_item
+                border-radius: 15px
+                background-color: $white
+                border: 0
+                margin-bottom: 12px
+
+                &::before
+                    display: none
+
+                &.Mui-expanded
+                    margin-bottom: 12px
+
+                .accordion_summary
+                    padding: 1rem
+                    &.Mui-expanded
+                        transform: rotate(45deg)
+
+                .accordion_question
+                    font-weight: 700
+                    color: $black
+                    font-size: 14px
+                    width: 95%
+
+                .accordion_details
+                    padding: 0 1.5rem 2rem
+
+                .accordion_answer
+                    color: $black_second
+                    font-size: 14px
+
+@media (min-width: 992px)
+    .faq
+        @include flexIten(column, center)
+        .faq_container
+            width: 90%
+            @include flexIten(row , space-between)
+            align-items: start
+
+            .title_container h1
+                font-size: 48px
+
+            .accordion_container
+                flex-direction: column
+                display: flex
+                width: 50%
+                .accordion_item
+                    .accordion_question
+                        font-size: 18px
+                        border-radius: 30px
+                    .accordion_summary
+                        padding: 2rem
+                    .accordion_details
+                        padding: 0 2rem 2rem
+
+                    .accordion_answer
+                        font-size: 16px
+
+@media (min-width: 1200px)
+    .faq
+        .faq_container
+            width: 70%
+            .title_container h1
+                width: 90%
+                font-size: 56px
+
+            .accordion_container
+                .accordion_item
+                    .accordion_question
+                        font-size: 24px
