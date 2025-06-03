@@ -1,0 +1,125 @@
+@use '../../styles/index.sass' as *
+.account_container
+    padding: 3rem 2rem 2rem
+    background-color: $white
+
+    .account_close
+        position: absolute
+        right: 5%
+        top: 3%
+
+        i
+            border-radius: 50%
+            width: 45px
+            border: 2px solid transparent
+            transition: all .2s ease
+            font-size: 32px
+            height: 45px
+            color: $pink
+            background-color: $gray_second
+
+    .img_container
+        display: none
+
+    .account_rigth
+        @include flexIten(column, space-between)
+        gap: 1.5rem
+
+        .account_outlet
+            width: 100%
+
+        .exercise_type
+            width: 100%
+            @include flexIten(column-reverse, center)
+            gap: 1rem
+            margin-top: 1.5rem
+
+            a
+                font-size: 18px
+                color: $pink
+                font-weight: 700
+
+            button
+                width: 100%
+                padding: 1rem 2rem
+                height: 71px
+                background-color: $pink
+                border-radius: 50px
+                font-size: 18px
+                font-weight: 600
+                color: $white
+                cursor: pointer
+                @include flexIten(row , space-between)
+
+                i
+                    color: $white
+
+@media (min-width: 992px)
+    .account_container
+        @include flexIten(row , space-between)
+        padding: 0
+
+        .account_close
+            right: 3%
+
+        .account_close:hover i
+            border-color: $pink
+
+        .img_container
+            position: fixed
+            top: 0%
+            width: 50%
+            display: block
+            height: 100%
+            .img_background
+                height: 100%
+                background-image: url('../../assets/images/back-register-small.png')
+                background-size: cover
+
+        .account_rigth
+            width: 50%
+            @include flexIten(column, space-between)
+            min-height: 100vh
+            padding: 4.5rem 2.5rem 2rem
+
+            .account_outlet
+                width: 100%
+                padding: 0
+
+            .exercise_type
+                @include flexIten(row, space-between)
+                width: 100%
+
+                button
+                    width: 60%
+                    transition: all .2s ease
+
+                    i
+                        transition: all .2s ease
+
+                    &:hover
+                        background-color: $blue_second
+                        color: $pink
+                        i
+                            color: $pink
+
+@media (min-width: 1200px)
+    .account_container
+        padding: 0rem
+        .account_close
+            right: 2%
+
+        .img_container
+            padding: 1rem
+            .img_background
+                background-image: url('../../assets/images/back-register-big.png')
+                background-size: cover
+                border-radius: 25px
+
+        .account_rigth
+            width: 50%
+            padding: 4rem 5rem 1rem
+
+            .exercise_type
+                button
+                    width: 40%
