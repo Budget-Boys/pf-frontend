@@ -41,13 +41,13 @@ const Account: React.FC<AccountProps> = ({ route }) => {
             {!isLogin && <NavLink to="login">Login</NavLink>}
             {!isRegister && <NavLink to="register">Register</NavLink>}
             {isLogin && (
-              <button form="login-form" type="submit">
+              <button className={style.btn_subimit} form="login-form" type="submit">
                 Entrar
                 <i className="fi fi-sr-right"></i>
               </button>
             )}
             {isRegister && (
-              <button form="register-form" type="submit">
+              <button className={style.btn_subimit} form="register-form" type="submit">
                 Cadastrar
                 <i className="fi fi-sr-right"></i>
               </button>
