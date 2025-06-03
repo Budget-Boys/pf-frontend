@@ -45,7 +45,19 @@
         i
             color: $pink
 
-@media (min-width: 968px)
-    header
-        height: 90px
-        padding: 1rem 3rem
+.btn_container
+    width: 100%
+    @include flexIten(row, end)
+    padding: 0 1.5rem
+    .btn_pass
+        @include flexIten(row, center)
+        gap: 1rem
+        color: $pink
+        background-color: transparent
+        font-weight: 600
+        cursor: pointer
+        font-size: 18px
+
+        i
+            color: $pink
+

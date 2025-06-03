@@ -27,7 +27,11 @@ const Account: React.FC<AccountProps> = ({ route }) => {
             <i className="fi fi-sr-minus-small"></i>
           </NavLink>
         </div>
-        <div className={style.img_background}></div>
+
+        <div className={style.img_container}>
+          <div className={style.img_background}></div>
+        </div>
+        <div className={style.box_left}></div>
         <div className={style.account_rigth}>
           <div className={style.account_outlet}>
             <Outlet />

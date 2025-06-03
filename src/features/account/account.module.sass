@@ -17,7 +17,7 @@
             color: $pink
             background-color: $gray_second
 
-    .img_background
+    .img_container
         display: none
 
     .account_rigth
@@ -58,16 +58,20 @@
         @include flexIten(row , space-between)
         flex-direction: row
         padding: 0
-        height: 100vh
+        min-height: 100vh
         .account_close
             right: 3%
 
-        .img_background
+        .img_container
+            position: fixed
+            top: 0%
             width: 50%
-            height: 100%
-            background-image: url('../../assets/images/teste2-o.png')
             display: block
-            background-size: cover
+            height: 100%
+            .img_background
+                height: 100%
+                background-image: url('../../assets/images/teste2-o.png')
+                background-size: cover
 
         .account_rigth
             width: 50%
@@ -93,14 +97,15 @@
         .account_close
             right: 2%
 
-        .img_background
-            background-image: url('../../assets/images/teste.png')
-            background-size: cover
-            border-radius: 25px
+        .img_container
+            padding: 1rem 0
+            .img_background
+                background-image: url('../../assets/images/teste.png')
+                background-size: cover
+                border-radius: 25px
 
         .account_rigth
             width: 50%
-            height: 100vh
             @include flexIten(column, space-between)
             gap: 5rem
             padding: 4.5rem 5rem 2rem
