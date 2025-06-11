@@ -9,6 +9,7 @@ import Responsive from "./section_responsive/responsive";
 
 
 
+
 const Home: React.FC = () => {
   return (
     <>

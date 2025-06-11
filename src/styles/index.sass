@@ -7,11 +7,13 @@ $white: #FFF
 $white_low_opacity: #ffffff99
 $white_big_low_opacity: #ffffff7a
 
+$gray_strong: #8d8d8d
 $gray: #E7E7E7
 $gray_second: #F4F4F4
 
 $pink: #FF80A1
 $pink_second: #FFE7EF
+$pink_third: #cc6681
 
 $blue: #24263B
 $blue_second: #2C3252
@@ -32,6 +34,7 @@ $black_second: #202020
     border: 0
     box-sizing: border-box
     color: $black
+    text-decoration: none
 
 body
     min-height: 100vh
@@ -41,9 +44,13 @@ ul
     display: flex
     list-style: none
 
+i
+    display: grid
+    place-items: center
+
 ::-webkit-scrollbar
     width: 5px
-   
+
 ::-webkit-scrollbar-track
     background: $white
 
@@ -52,7 +59,7 @@ ul
     border-radius: 15px
 
     &:hover
-        background: $blue 
+        background: $blue
 
 @media (min-width: 992px)
     section
