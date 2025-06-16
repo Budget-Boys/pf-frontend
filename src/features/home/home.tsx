@@ -7,9 +7,6 @@ import Features from "./section_features/features";
 import Faq from "./section_faq/faq";
 import Responsive from "./section_responsive/responsive";
 
-
-
-
 const Home: React.FC = () => {
   return (
     <>
