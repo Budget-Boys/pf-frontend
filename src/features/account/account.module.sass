@@ -30,29 +30,30 @@
 
         .exercise_type
             width: 100%
-            @include flexIten(column-reverse, center)
+            @include flexIten(column, center)
             gap: 1rem
-            margin-top: 1.5rem
+            margin-top: 1rem
 
-            a
-                font-size: 18px
-                color: $pink
-                font-weight: 700
-
-            button
-                width: 100%
+            .btn_submit
+                font-weight: 600
                 padding: 1rem 2rem
+                border-radius: 50px
+                @include flexIten(row , space-between)
+                width: 100%
+                font-size: 18px
                 height: 71px
                 background-color: $pink
-                border-radius: 50px
-                font-size: 18px
-                font-weight: 600
                 color: $white
                 cursor: pointer
-                @include flexIten(row , space-between)
 
                 i
                     color: $white
+
+            a
+                @extend .btn_submit
+                color: $pink
+                background-color: $white
+                border: 2px solid $pink
 
 @media (min-width: 992px)
     .account_container
@@ -90,7 +91,7 @@
                 @include flexIten(row, space-between)
                 width: 100%
 
-                button
+                .btn_submit
                     width: 60%
                     transition: all .2s ease
 
@@ -102,6 +103,16 @@
                         color: $pink
                         i
                             color: $pink
+
+                a
+                    border: 0
+                    height: initial
+                    width: initial
+                    padding: 0
+                    border-radius: 0
+
+                    &:hover
+                        background-color: initial
 
 @media (min-width: 1200px)
     .account_container
@@ -121,5 +132,5 @@
             padding: 4rem 5rem 1rem
 
             .exercise_type
-                button
+                .btn_submit
                     width: 40%
