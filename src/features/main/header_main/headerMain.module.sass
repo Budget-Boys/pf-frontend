@@ -1,0 +1,23 @@
+@use '../../../styles/index.sass' as *
+
+.header_main
+    height: 178px
+    padding: 1rem
+    background-color: $pink
+
+    .configuration_container
+        @include flexIten(row, space-between)
+        font-size: 18px
+
+        .user_container
+            @include flexIten(row, center)
+            
+            p
+                     color: $white
+
+        i
+            color: $white
+
+@media (min-width: 992px)
+
+@media (min-width: 1200px)

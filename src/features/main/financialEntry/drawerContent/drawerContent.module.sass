@@ -1,0 +1,43 @@
+@use '../../../../styles/index.sass' as *
+
+.title_container h1
+    font-weight: 400
+
+.container_financialData
+    margin-top: 2rem
+    @include flexIten(column, space-between)
+    gap: 5rem
+    height: 100%
+
+    .lineTitle
+        margin: 2rem 0 1.5rem
+        width: 100%
+        display: flex
+        align-items: center
+
+        h4
+            width: 20%
+
+    .lineTitle::after
+        display: block
+        content: ''
+        width: 80%
+        height: 3px
+        border-radius: 10px
+        background-color: $pink_second
+
+    button
+
+        width: 100%
+        padding: 1rem 2rem
+        height: 71px
+        background-color: $pink
+        border-radius: 50px
+        font-size: 18px
+        font-weight: 600
+        color: $white
+        cursor: pointer
+
+@media (min-width: 992px)
+
+@media (min-width: 1200px)

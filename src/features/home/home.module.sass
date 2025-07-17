@@ -1,8 +1,8 @@
 @use '../../styles/index.sass' as *
 
-main
+.main_home
     margin-top: 80px
-
+    background-color: $gray_second
     .banner
         height: 90vh
         min-height: 0
@@ -55,7 +55,7 @@ main
         background-position: center
 
 @media (min-width: 992px)
-    main
+    .main_home
         margin-top: 90px
 
         .banner
@@ -87,7 +87,7 @@ main
             border-radius: 0 0 0 40px
 
 @media (min-width: 1200px)
-    main
+    .main_home
         .banner
             padding: 0rem 8rem !important
             .account_container

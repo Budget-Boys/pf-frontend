@@ -11,7 +11,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className={style.main_home}>
         <section className={style.banner}>
           <div className={style.account_container}>
             <div className={style.banner_title}>
