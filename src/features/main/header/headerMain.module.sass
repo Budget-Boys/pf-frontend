@@ -1,0 +1,28 @@
+@use '../../../styles/index.sass' as *
+
+.header_main
+    width: 100%
+    padding: .8rem
+    background-color: $pink_second
+    border-radius: 50px
+    .configuration_container
+        @include flexIten(row-reverse, space-between)
+        font-size: 18px
+
+        .user_container
+            @include flexIten(row, center)
+
+            p
+                color: $pink
+                font-weight: 600
+                padding-right: .5em
+
+        i
+            background-color: $pink
+            padding: 1rem
+            border-radius: 50%
+            color: $white
+
+@media (min-width: 992px)
+
+@media (min-width: 1200px)

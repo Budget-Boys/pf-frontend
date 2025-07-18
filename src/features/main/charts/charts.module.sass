@@ -1,0 +1,23 @@
+@use '../../../styles/index.sass' as *
+
+.section_charts
+    width: 100%
+    @include flexIten(column, center)
+    gap: .8rem
+    .container_pie, .container_line
+        width: 100%
+        padding: 1.25rem
+        background-color: $gray
+        border-radius: 25px
+
+@media (min-width: 992px)
+    .section_charts
+        gap: 1.25rem
+        @include flexIten(row, center)
+
+        .container_pie
+            width: 35%
+
+        .container_line
+            width: 65%
+@media (min-width: 1200px)

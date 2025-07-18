@@ -4,7 +4,7 @@ import Account from "../features/account/account";
 import Login from "../features/account/login/login";
 import Register from "../features/account/register/register";
 import Main from "../features/main/main";
-import Statistics from "../features/statistics/statistics";
+
 
 
 function RoutesControll() {
@@ -18,7 +18,7 @@ function RoutesControll() {
             <Route path="/login" element={<Login />} />
           </Route>
           <Route path="main" element={<Main />} />
-          <Route path="statistics" element={<Statistics />} />
+        
         </Routes>
       </BrowserRouter>
     </>

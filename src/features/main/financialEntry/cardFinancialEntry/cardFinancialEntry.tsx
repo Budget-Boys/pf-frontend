@@ -21,7 +21,7 @@ const CardFinancialEntryStyled = styled.button<{ variant?: string }>`
   flex-direction: column;
   align-items: start;
   gap: 1.5rem;
-  width: 145px;
+  width: 50%;
 
   i {
     font-size: 20px;
