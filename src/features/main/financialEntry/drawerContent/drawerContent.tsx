@@ -1,8 +1,16 @@
 import Input from "../../../../components/input/input";
+import GroupExpanses from "../groups/groupExpanse";
 import GroupIncome from "../groups/groupIncome";
-import style from "./drawerContent.module.sass"
+import style from "./drawerContent.module.sass";
 
-const DrawerFinancialData: React.FC = () => {
+interface FinancialProps {
+  type: string;
+}
+
+const DrawerFinancialData: React.FC<FinancialProps> = ({type}) => {
+
+
+
   return (
     <>
       <div className={style.title_drawer}>
@@ -15,12 +23,12 @@ const DrawerFinancialData: React.FC = () => {
           <div className={style.lineTitle}>
             <h4>Fonte: </h4>
           </div>
-
-          <GroupIncome
-            onChange={function (): void {
+          {type === "Renda" ? <GroupIncome onChange={function (): void {
+            throw new Error("Function not implemented.");
+          } } /> : <GroupExpanses onChange={function (): void {
               throw new Error("Function not implemented.");
-            }}
-          />
+            } }/>}
+          
         </div>
 
         <button>Adicionar</button>

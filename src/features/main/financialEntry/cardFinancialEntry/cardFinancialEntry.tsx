@@ -5,7 +5,7 @@ import { Drawer } from "@mui/material";
 import DrawerFinancialData from "../drawerContent/drawerContent";
 
 
-interface ButtonProps {
+interface FinancialEntryProps {
   text: string;
   icon: string;
 }
@@ -70,7 +70,7 @@ const BtnCloseButton = styled.button`
   }
 `;
 
-const CardFinancialEntry: React.FC<ButtonProps> = ({ text, icon }) => {
+const CardFinancialEntry: React.FC<FinancialEntryProps> = ({ text, icon }) => {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -94,7 +94,7 @@ const CardFinancialEntry: React.FC<ButtonProps> = ({ text, icon }) => {
           </BtnCloseButton>
 
            {/* Conteudo drawer do MUI */}
-          <DrawerFinancialData />
+          <DrawerFinancialData type={text} />
         </section>
       </Drawer>
     </>
