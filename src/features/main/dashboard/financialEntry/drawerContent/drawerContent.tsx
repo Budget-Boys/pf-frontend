@@ -1,4 +1,4 @@
-import Input from "../../../../components/input/input";
+import Input from "../../../../../components/input/input";
 import GroupExpanses from "../groups/groupExpanse";
 import GroupIncome from "../groups/groupIncome";
 import style from "./drawerContent.module.sass";

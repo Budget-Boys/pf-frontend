@@ -1,4 +1,4 @@
-import Radio from "../../../../components/radio/radio";
+import Radio from "../../../../../components/radio/radio";
 
 interface GroupProps {
   onChange: (value: string) => void;

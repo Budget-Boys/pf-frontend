@@ -1,0 +1,35 @@
+@use '../../../styles/index.sass' as *
+
+.container_menu
+    display: none
+
+@media (min-width: 992px)
+
+@media (min-width: 1200px)
+    .container_menu
+        padding: 1.25rem
+        @include flexIten (column, start)
+        width: 20%
+        gap: 1rem
+        background-color: $gray
+        border-radius: 25px
+        height: 100vh
+
+        a
+            display: flex
+            align-items: center
+            background-color: $white_low_opacity
+            width: 100%
+            gap: 1rem
+            padding: 1.25rem
+            text-decoration: none
+            transition: all .3s ease
+            border-radius: 30px
+            border: 2px solid transparent
+
+            span, i
+                color: $blue
+            &:hover
+                border-color: $pink
+                span, i
+                    color: $pink

@@ -1,20 +1,17 @@
-
-import Balance from "./balance/balance";
-import Charts from "./charts/charts";
-import FinancialEntry from "./financialEntry/financialEntry";
-import HeaderMain from "./header/headerMain";
-import History from "./history/history";
+import { Outlet } from "react-router-dom";
 import style from "./main.module.sass";
+import Menu from "./menu/menu";
+import HeaderMain from "./header/headerMain";
 
 const Main: React.FC = () => {
   return (
     <>
       <main>
-        <HeaderMain />
-        <Balance />
-        <Charts />
-        <FinancialEntry />
-        <History />
+        <Menu />
+        <div className={style.container}>
+          <HeaderMain />
+          <Outlet />
+        </div>
       </main>
     </>
   );

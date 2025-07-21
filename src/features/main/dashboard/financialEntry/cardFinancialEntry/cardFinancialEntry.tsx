@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { theme } from "../../../../styles/themes";
+import { theme } from "../../../../../styles/themes";
 import { Drawer } from "@mui/material";
 import DrawerFinancialData from "../drawerContent/drawerContent";
 
