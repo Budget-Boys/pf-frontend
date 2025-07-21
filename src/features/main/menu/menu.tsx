@@ -6,7 +6,7 @@ const Menu: React.FC = () => {
     <>
       <div className={style.container_menu}>
        <NavLink to="dashboard" className={style.menu_item}>
-          <i className="fi fi-sr-home"></i>
+          <i className="fi fi-sr-dashboard"></i>
           <span>Dashboard</span>
         </NavLink>
         <NavLink to="settigns" className={style.menu_item}>
