@@ -4,7 +4,6 @@ import { theme } from "../../../../../styles/themes";
 import { Drawer } from "@mui/material";
 import DrawerFinancialData from "../drawerContent/drawerContent";
 
-
 interface FinancialEntryProps {
   text: string;
   icon: string;
@@ -13,8 +12,6 @@ interface FinancialEntryProps {
 // Usando a tag HTML button diretamente com styled-components
 const CardFinancialEntryStyled = styled.button<{ variant?: string }>`
   background-color: ${theme.gray};
-  cursor: pointer;
-  transition: background-color 0.3s ease;
   border-radius: 25px;
   padding: 1.25rem;
   display: flex;
@@ -43,13 +40,25 @@ const CardFinancialEntryStyled = styled.button<{ variant?: string }>`
   }
 
   @media (min-width: 992px) {
-    padding: 14px 30px;
     font-size: 18px;
+    width: 20%;
+    border: 2px solid transparent;
+    transition: .3s ease;
+    cursor: pointer;
+
+    &:hover {
+      border-color: ${theme.pink};
+    }
   }
 `;
 
-const drawerStyle = {
+const drawerStyle: React.CSSProperties = {
   padding: "3rem 2rem 2rem",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "2rem",
+  justifyContent: "space-between",
 };
 
 const BtnCloseButton = styled.button`
@@ -57,6 +66,7 @@ const BtnCloseButton = styled.button`
   right: 5%;
   top: 3%;
   border-radius: 50%;
+  cursor: pointer;
 
   i {
     border-radius: 50%;
@@ -67,6 +77,10 @@ const BtnCloseButton = styled.button`
     color: ${theme.pink};
     background-color: ${theme.gray};
     transition: all 0.2s ease;
+  }
+
+  i:hover {
+    border-color: ${theme.pink};
   }
 `;
 
@@ -93,7 +107,7 @@ const CardFinancialEntry: React.FC<FinancialEntryProps> = ({ text, icon }) => {
             <i className="fi fi-sr-minus-small"></i>
           </BtnCloseButton>
 
-           {/* Conteudo drawer do MUI */}
+          {/* Conteudo drawer do MUI */}
           <DrawerFinancialData type={text} />
         </section>
       </Drawer>
