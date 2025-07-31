@@ -3,40 +3,52 @@ import style from "./input.module.sass";
 
 interface InputProps {
   placeholder: string;
+  inputName: string;
   icon: string;
   type: string;
-  disabled?: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<InputProps> = ({ placeholder, icon, type, disabled = false }) => {
+const Input: React.FC<InputProps> = ({
+  inputName,
+  placeholder,
+  icon,
+  type,
+  onChange,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
-  const isPass = type === "password";
-  const inputType = isPass && showPassword ? "text" : type;
+  const isPass = type == "password";
+  const inputType = isPass ? (showPassword ? "text" : "password") : type;
 
-  const togglePassword = () => {
+  const tooglePassword = () => {
     setShowPassword((prev) => !prev);
   };
 
   return (
-    <div className={style.input_body}>
-      <input
-        type={inputType}
-        placeholder={placeholder}
-        disabled={disabled}
-        className={style.input_field}
-      />
+    <>
+      <div className={style.input_body}>
+        <input
+          id={inputName}
+          type={inputType}
+          placeholder={placeholder}
+          onChange={onChange}
+        />
+        <i className={`fi fi-sr-${icon}`}></i>
+      </div>
 
-      {/* Ícone ou botão de senha */}
-      {!isPass ? (
-        <i className={`fi fi-sr-${icon} ${style.input_icon}`}></i>
-      ) : (
-        <button
-          type="button"
-          onClick={togglePassword}
-          className={style.input_icon}
-        >
-          <i className={`fi fi-sr-${showPassword ? "eye" : "eye-crossed"}`}></i>
-        </button>
+      {isPass && (
+        <div className={style.btn_container}>
+          <button
+            className={style.btn_pass}
+            onClick={tooglePassword}
+            type="button"
+          >
+            {showPassword ? "Ocultar senha" : "Mostrar senha"}
+            <i
+              className={`fi fi-sr-${showPassword ? "eye-crossed" : "eye"}`}
+            ></i>
+          </button>
+        </div>
       )}
     </div>
   );

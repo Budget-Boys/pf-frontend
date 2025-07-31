@@ -16,19 +16,24 @@ const GroupIncome: React.FC<GroupProps> = ({ onChange }) => {
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };
-
+  
   const containerGroupStyled = {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '1rem',
+    display: "flex",
+    justifyContent: "center",
+    gap: "1rem",
     width: "100%",
-    flexWrap: 'wrap' as const,
+    flexWrap: "wrap" as const,
   };
 
   return (
     <div style={containerGroupStyled}>
-      {income.map((income) => (
-        <Radio label={income.name} />
+      {income.map((item) => (
+        <Radio
+          key={item.id}
+          label={item.name}
+          onChange={handleRadioChange}
+          value={item.id}
+        />
       ))}
     </div>
   );
