@@ -42,8 +42,13 @@ const expenses = [
 
   return (
     <div style={containerGroupStyled}>
-      {expenses.map((expenses) => (
-        <Radio label={expenses.name} />
+      {expenses.map((item) => (
+         <Radio
+          key={item.id}
+          label={item.name}
+          onChange={handleRadioChange}
+          value={item.id}
+        />
       ))}
     </div>
   );
