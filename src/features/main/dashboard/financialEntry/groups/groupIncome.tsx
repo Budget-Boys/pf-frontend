@@ -21,6 +21,7 @@ const GroupIncome: React.FC<GroupProps> = ({ onChange }) => {
     display: 'flex',
     justifyContent: 'center',
     gap: '1rem',
+    width: "100%",
     flexWrap: 'wrap' as const,
   };
 

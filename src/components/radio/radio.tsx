@@ -13,14 +13,17 @@ const RoutineStyled = styled.div`
   }
 
   label {
-    display: block;
+    display: flex;
     background-color: ${theme.gray};
     border: 1px solid transparent;
     font-size: 16px;
-    padding: 1rem;
+    padding: .8rem;
+    height: 71px;
+    align-items: center;
+    justify-content: center;
     transition: .3s ease-in-out;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 35px;
     
     p {
       font-weight: 500;

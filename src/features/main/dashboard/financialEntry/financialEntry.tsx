@@ -4,7 +4,7 @@ import style from "./financialEntry.module.sass";
 const FinancialEntry: React.FC = () => {
   return (
     <>
-      <div className={style.section_financialEntry}>
+      <div className={style.container_financialEntry}>
         <div className={style.lineTitle}>
           <h4>Cadastre suas finanças</h4>
         </div>

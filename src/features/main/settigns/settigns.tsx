@@ -1,3 +1,4 @@
+
 import { NavLink } from "react-router-dom";
 import Input from "../../../components/input/input";
 import style from "./settigns.module.sass";

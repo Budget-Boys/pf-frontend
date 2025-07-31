@@ -7,11 +7,9 @@ interface GroupProps {
 const GroupExpanses: React.FC<GroupProps> = ({ onChange }) => {
 const expenses = [
   { id: "RENT", name: "aluguel" },
-  { id: "MORTGAGE", name: "hipoteca" },
   { id: "UTILITIES", name: "serviços públicos" },
   { id: "GROCERIES", name: "mercado" },
   { id: "DINING_OUT", name: "refeições fora" },
-  { id: "DELIVERY", name: "entrega" },
   { id: "FUEL", name: "combustível" },
   { id: "SUPPLIES", name: "suprimentos" },
   { id: "SUBSCRIPTIONS", name: "assinaturas" },
@@ -37,7 +35,9 @@ const expenses = [
     display: 'flex',
     justifyContent: 'center',
     gap: '1rem',
+    width: "100%",
     flexWrap: 'wrap' as const,
+   
   };
 
   return (

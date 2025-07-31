@@ -19,7 +19,7 @@ function RoutesControll() {
           </Route>
           <Route path="main" element={<Main />}>
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="settigns" element={<Settigns />} />
+            <Route path="settings" element={<Settigns />} />
           </Route>
         </Routes>
       </BrowserRouter>
