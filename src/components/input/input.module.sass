@@ -1,63 +1,72 @@
 @use '../../styles/index.sass' as *
 
 .input_body
-    background-color: $gray
-    display: flex
-    border-radius: 50px
-    width: 100%
-    display: flex
-    gap: 1rem
-    padding: 1rem 2rem
+  background-color: $gray
+  display: flex
+  align-items: center
+  justify-content: space-between
+  border-radius: 50px
+  width: 100%
+  gap: 1rem
+  padding: 1rem 2rem
+  transition: all .2s ease
+  border: 2px solid transparent
+
+  input
+    flex: 1 1 auto         // ⬅️ Faz o input ocupar todo o espaço restante
+    min-width: 0           // ⬅️ Evita quebra por padrão de navegador
+    height: 35px
+    font-size: 18px
+    font-weight: 500
+    background-color: transparent
+
+    &:focus
+      outline: 0
+
+    &::placeholder
+      font-weight: 800
+      transition: all .2s ease
+      color: $gray_strong
+
+  i
+    flex-shrink: 0         // ⬅️ Garante que o ícone não empurre o input
+    width: 20px            // ⬅️ Padroniza tamanho de ícone
+    font-size: 18px
+    color: $gray_strong
+    text-align: center
     transition: all .2s ease
-    border: 2px solid transparent
-    input
-        width: 100%
-        height: 35px
-        font-size: 18px
-        font-weight: 500
-        background-color: $black
-        background-color: transparent
 
-        &:focus
-            outline: 0
+  &:focus-within
+    border: 2px solid $pink
 
-        &::placeholder
-            font-weight: 800
-            transition: all .2s ease
-            color: $gray_strong
+    input::placeholder
+      color: $pink
+
     i
-        color: $gray_strong
-        font-size: 18px
-        transition: all .2s ease
+      color: $pink
 
-    &:focus-within
-        border: 2px solid $pink
-        input::placeholder
-            color: $pink
-        i
-            color: $pink
+  &:hover
+    border: 2px solid $pink
 
-    &:hover
-        border: 2px solid $pink
+    input::placeholder
+      color: $pink
 
-        input::placeholder
-            color: $pink
-        i
-            color: $pink
+    i
+      color: $pink
 
 .btn_container
-    width: 100%
-    @include flexIten(row, end)
-    padding: 0 1.5rem
-    .btn_pass
-        @include flexIten(row, center)
-        gap: 1rem
-        color: $pink
-        background-color: transparent
-        font-weight: 600
-        cursor: pointer
-        font-size: 18px
+  width: 100%
+  @include flexIten(row, end)
+  padding: 0 1.5rem
 
-        i
-            color: $pink
+  .btn_pass
+    @include flexIten(row, center)
+    gap: 1rem
+    color: $pink
+    background-color: transparent
+    font-weight: 600
+    cursor: pointer
+    font-size: 18px
 
+    i
+      color: $pink

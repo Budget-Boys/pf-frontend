@@ -5,31 +5,40 @@ interface InputProps {
   placeholder: string;
   icon: string;
   type: string;
+  disabled?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({ placeholder, icon, type }) => {
-  const [showPassword, setShowPassword] = useState(false)
-  const isPass = type == "password"
-  const inputType = isPass ? (showPassword ? "text" : "password") : type
+const Input: React.FC<InputProps> = ({ placeholder, icon, type, disabled = false }) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const isPass = type === "password";
+  const inputType = isPass && showPassword ? "text" : type;
 
-  const tooglePassword = () => {
-    setShowPassword((prev => !prev))
-  }
+  const togglePassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return (
-    <>
-      <div className={style.input_body}>
-        <input type={inputType} placeholder={placeholder} />
-        <i className={`fi fi-sr-${icon}`}></i>
-      </div>
-      {isPass && (
-        <div className={style.btn_container}>
-          <button className={style.btn_pass} onClick={tooglePassword} type="button">
-            {showPassword ? "Ocultar senha" : "Mostrar senha"}
-            <i className={`fi fi-sr-${showPassword ? "eye-crossed" : "eye"}`}></i>
-          </button>
-        </div>
+    <div className={style.input_body}>
+      <input
+        type={inputType}
+        placeholder={placeholder}
+        disabled={disabled}
+        className={style.input_field}
+      />
+
+      {/* Ícone ou botão de senha */}
+      {!isPass ? (
+        <i className={`fi fi-sr-${icon} ${style.input_icon}`}></i>
+      ) : (
+        <button
+          type="button"
+          onClick={togglePassword}
+          className={style.input_icon}
+        >
+          <i className={`fi fi-sr-${showPassword ? "eye" : "eye-crossed"}`}></i>
+        </button>
       )}
-    </>
+    </div>
   );
 };
 

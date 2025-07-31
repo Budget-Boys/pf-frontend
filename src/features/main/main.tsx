@@ -6,7 +6,8 @@ import HeaderMain from "./header/headerMain";
 const Main: React.FC = () => {
   return (
     <>
-      <main className={style.main_app}>
+      <main className={style.main_dashbord}>
+
         <div className={style.teste}></div>
         <Menu />
         <div className={style.container}>
