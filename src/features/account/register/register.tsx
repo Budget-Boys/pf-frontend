@@ -23,12 +23,13 @@ const Register: React.FC = () => {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const result = await POST("http://localhost:9000/users", form);
+    const result = await POST("http://localhost:9000/api/users", form);
 
     if (result.success) {
       console.log(form);
     } else {
       console.error("Erro ao registrar usuário:", result.message);
+
     }
   }
 
