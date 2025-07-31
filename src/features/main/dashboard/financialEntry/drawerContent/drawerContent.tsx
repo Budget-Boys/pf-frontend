@@ -3,6 +3,7 @@ import Input from "../../../../../components/input/input";
 import GroupExpanses from "../groups/groupExpanse";
 import GroupIncome from "../groups/groupIncome";
 import style from "./drawerContent.module.sass";
+import { POST } from "../../../../../services/post";
 
 interface FinancialProps {
   type: string;
@@ -10,34 +11,41 @@ interface FinancialProps {
 
 const DrawerFinancialData: React.FC<FinancialProps> = ({ type }) => {
   const [form, setForm] = useState({
-    price: "",
-    radio: "",
+    userId: "aa80b0eb-ec68-475c-8026-f4346854d75c",
+    amount: 0.0,
+    category: "",
   });
 
   function handleChange(e: ChangeEvent<HTMLInputElement>): void {
     const { id, value } = e.target;
     setForm((prev) => ({
       ...prev,
-      [id]: value,
+      [id]: id === "amount" ? parseFloat(value) : value,
     }));
   }
 
   function handleRadioChange(value: string) {
     setForm((prev) => ({
       ...prev,
-      radio: value,
+      category: value,
     }));
   }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const result = await POST("http://localhost:8080/gymbro/person", form);
+    // URL baseada no tipo
+    const endpoint =
+      type === "Renda"
+        ? "http://localhost:9000/api/finance/incomes"
+        : "http://localhost:9000/api/finance/expenses";
+
+    const result = await POST(endpoint, form);
 
     if (result.success) {
-      console.log(form);
+      console.log("Dados enviados com sucesso:", form);
     } else {
-      console.error("Erro ao registrar usuário:", result.message);
+      console.error("Erro ao registrar:", result.message);
     }
   }
 
@@ -57,7 +65,7 @@ const DrawerFinancialData: React.FC<FinancialProps> = ({ type }) => {
             icon={"money"}
             type={"number"}
             onChange={handleChange}
-            inputName={"price"}
+            inputName={"amount"}
           />
 
           <div className={style.lineTitle}>

@@ -20,8 +20,31 @@
 
     .container_history
         padding: 1.25rem
+        @include flexIten(column, center)
         background-color: $gray
         border-radius: 25px
+
+        .history_table
+            width: 100%
+            border-collapse: collapse
+
+            th, td
+                padding: 1rem 0
+
+            .positive
+                color: #28a745
+                font-weight: 500
+                
+                &::before
+                    content: "+"
+                    margin-right: 2px
+
+            .negative
+                color: #dc3545
+                font-weight: 500
+                &::before
+                    content: "-"
+                    margin-right: 2px
 
 @media (min-width: 992px)
 

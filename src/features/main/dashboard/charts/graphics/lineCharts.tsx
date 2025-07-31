@@ -1,60 +1,176 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useEffect } from "react";
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   Tooltip,
   Legend,
   ResponsiveContainer,
+  CartesianGrid,
+  Text,
 } from "recharts";
 
-const data = [
-  { week: "S1", renda: 10000, despesas: 5000 },
-  { week: "S2", renda: 25000, despesas: 12000 },
-  { week: "S3", renda: 45000, despesas: 22000 },
-  { week: "S4", renda: 73418, despesas: 34827 },
-];
+interface FinanceData {
+  status: string;
+  expensesAmountTotal: number;
+  incomesAmountTotal: number;
+  balance: number;
+}
 
-const ChartLineBalance = () => {
+interface ChartData {
+  month: string;
+  renda: number;
+  despesas: number;
+}
+
+const ChartBarBalance = () => {
+  const [data, setData] = useState<ChartData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:9000/api/finance/balance/aa80b0eb-ec68-475c-8026-f4346854d75c"
+        );
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const financeData: FinanceData = await response.json();
+        
+        // Formatando os dados para o gráfico por mês (exemplo com dados mockados)
+        const formattedData: ChartData[] = [
+          {
+            month: "Jan",
+            renda: financeData.incomesAmountTotal,
+            despesas: financeData.expensesAmountTotal,
+          },
+          {
+            month: "Fev",
+            renda: financeData.incomesAmountTotal * 0.8,
+            despesas: financeData.expensesAmountTotal * 1.1,
+          },
+          {
+            month: "Mar",
+            renda: financeData.incomesAmountTotal * 1.2,
+            despesas: financeData.expensesAmountTotal * 0.9,
+          },
+           {
+            month: "Abr",
+            renda: financeData.incomesAmountTotal * 1.3,
+            despesas: financeData.expensesAmountTotal * 0.4,
+          },
+            {
+            month: "Mai",
+            renda: financeData.incomesAmountTotal * 0.5,
+            despesas: financeData.expensesAmountTotal * 2.4,
+          },
+          // Adicione mais meses conforme necessário
+        ];
+        
+        setData(formattedData);
+        setLoading(false);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An unknown error occurred");
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Carregando gráfico...</div>;
+  }
+
+  if (error) {
+    return <div>Erro ao carregar dados do gráfico</div>;
+  }
+
+  // Função para formatar valores monetários
+  const formatCurrency = (value: number) => {
+    return value.toLocaleString("pt-BR", { 
+      style: "currency", 
+      currency: "BRL",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  };
+
+  // Componente personalizado para a legenda
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const renderLegend = (props: any) => {
+    const { payload } = props;
+    return (
+      <div style={{ display: 'flex', justifyContent: 'flex-start', gap: '20px', paddingLeft: '10px' }}>
+        {payload.map((entry: any, index: number) => {
+          // Encontra o valor total para esta chave de dados
+          const totalValue = data.reduce((sum, item) => sum + item[entry.dataKey], 0);
+          
+          return (
+            <div key={`legend-${index}`} style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{
+                width: '12px',
+                height: '12px',
+                borderRadius: '50%',
+                backgroundColor: entry.color,
+                marginRight: '8px'
+              }} />
+              <span style={{ fontSize: 14, color: '#555', marginRight: '5px' }}>
+                {entry.value}
+              </span>
+              <span style={{ fontSize: 14, color: '#555', fontWeight: 'bold' }}>
+                {formatCurrency(totalValue)}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
   return (
     <div style={{ width: "100%", height: 300, backgroundColor: "transparent" }}>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 20, right: 20, bottom: 0, left: 0 }}>
-          <XAxis dataKey="week" />
+        <BarChart
+          data={data}
+          margin={{ top: 20, right: 20, bottom: 0, left: 0 }}
+          barCategoryGap="25%"
+        >
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <XAxis dataKey="month" />
           <YAxis hide />
           <Tooltip
-            formatter={(value: number) =>
-              value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
-            }
+            formatter={(value: number) => formatCurrency(value)}
           />
-          <Legend
+          <Legend 
+            content={renderLegend}
             verticalAlign="top"
             align="left"
-            iconType="circle"
-            formatter={(value) => (
-              <span style={{ fontSize: 14, color: "#555" }}>{value}</span>
-            )}
           />
-          <Line
-            type="monotone"
+          <Bar
             dataKey="renda"
-            stroke="#00A86B"
-            strokeWidth={3}
-            dot={false}
+            fill="#00A86B"
             name="Renda"
+            radius={[4, 4, 0, 0]}
+            barSize={30}
           />
-          <Line
-            type="monotone"
+          <Bar
             dataKey="despesas"
-            stroke="#FF3B3B"
-            strokeWidth={3}
-            dot={false}
+            fill="#FF3B3B"
             name="Despesas"
+            radius={[4, 4, 0, 0]}
+            barSize={30}
           />
-        </LineChart>
+        </BarChart>
       </ResponsiveContainer>
     </div>
   );
 };
 
-export default ChartLineBalance;
+export default ChartBarBalance;
