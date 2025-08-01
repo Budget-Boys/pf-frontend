@@ -3,9 +3,10 @@ import style from "./login.module.sass";
 import img from "../../../assets/images/banknotes.png";
 import { useState, type ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { POST } from "../../../services/post";
 const Login: React.FC = () => {
   const [form, setForm] = useState({
-    name: "",
+    email: "",
     password: "",
   });
 
@@ -21,7 +22,17 @@ const Login: React.FC = () => {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    console.log(form);
+
+    const result = await POST("http://localhost:8080/login", form);
+
+    if (result.success) {
+      console.log("Sucesso ao cadastrar o usuario", result.message);
+      console.log(form);
+      navigate("/main/dashboard");
+    } else {
+      console.error("Erro ao registrar usuário:", result.message);
+      console.log(form);
+    }
   }
 
   return (
@@ -33,11 +44,11 @@ const Login: React.FC = () => {
         <img src={img} alt="" />
         <form action="" id="login-form" onSubmit={handleSubmit}>
           <Input
-            placeholder={"Nome:"}
+            placeholder={"Email:"}
             icon={"piggy-bank"}
-            type={"text"}
+            type={"email"}
             onChange={handleChange}
-            inputName={"name"}
+            inputName={"email"}
           />
           <Input
             placeholder={"Senha:"}

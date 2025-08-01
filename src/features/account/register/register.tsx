@@ -2,9 +2,12 @@ import Input from "../../../components/input/input";
 import style from "./register.module.sass";
 import img from "../../../assets/images/banknotes3.png";
 import { useState, type ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { POST } from "../../../services/post";
 
 const Register: React.FC = () => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -23,13 +26,15 @@ const Register: React.FC = () => {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const result = await POST("http://localhost:9000/api/users", form);
+    const result = await POST("http://localhost:8080/users", form);
 
     if (result.success) {
+      console.log("Sucesso ao realizar o login", result.message);
       console.log(form);
+      navigate("/login");
     } else {
       console.error("Erro ao registrar usuário:", result.message);
-
+      console.log(form);
     }
   }
 
