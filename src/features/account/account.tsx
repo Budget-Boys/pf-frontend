@@ -38,16 +38,16 @@ const Account: React.FC<AccountProps> = ({ route }) => {
           </div>
           <div className={style.exercise_type}>
             {/* Verifica qual é a rota e renderiza o botão de acordo */}
-            {!isLogin && <NavLink to="login">Login</NavLink>}
-            {!isRegister && <NavLink to="register">Register</NavLink>}
+            {!isLogin && <NavLink to="login">Entrar</NavLink>}
+            {!isRegister && <NavLink to="register">Criar uma conta</NavLink>}
             {isLogin && (
-              <button className={style.btn_subimit} form="login-form" type="submit">
+              <button className={style.btn_submit} form="login-form" type="submit">
                 Entrar
                 <i className="fi fi-sr-right"></i>
               </button>
             )}
             {isRegister && (
-              <button className={style.btn_subimit} form="register-form" type="submit">
+              <button className={style.btn_submit} form="register-form" type="submit">
                 Cadastrar
                 <i className="fi fi-sr-right"></i>
               </button>
