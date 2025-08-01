@@ -1,0 +1,30 @@
+@use '../../../../styles/index.sass' as *
+
+.container_financialEntry
+    width: 100%
+    
+    .lineTitle
+        width: 100%
+        display: flex
+        align-items: center
+        margin-bottom: 1.5rem
+    h4
+        width: 50%
+
+    .lineTitle::after
+        display: block
+        content: ''
+        width: 50%
+        height: 2px
+        border-radius: 10px
+        background-color: $pink_second
+
+    .group_financialEntry
+        @include flexIten(row,start)
+        gap: 1rem
+
+
+@media (min-width: 992px)
+    
+
+@media (min-width: 1200px)
