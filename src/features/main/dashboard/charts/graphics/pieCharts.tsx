@@ -3,7 +3,6 @@ import { Box, Typography, Stack } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { GET } from '../../../../../services/get';
 
-
 interface BalanceData {
   status: "POSITIVE" | "NEGATIVE";
   expensesAmountTotal: number;
@@ -40,17 +39,16 @@ export default function HalfPieChart() {
     fetchBalanceData();
   }, []);
 
-  // Dados formatados para o gráfico
   const chartData = [
-    { 
-      name: 'Receitas', 
-      value: balanceData?.incomesAmountTotal || 0, 
-      color: '#00A86B' 
+    {
+      name: 'Receitas',
+      value: balanceData?.incomesAmountTotal || 0,
+      color: '#00A86B'
     },
-    { 
-      name: 'Despesas', 
-      value: balanceData?.expensesAmountTotal || 0, 
-      color: '#FF3B3B' 
+    {
+      name: 'Despesas',
+      value: balanceData?.expensesAmountTotal || 0,
+      color: '#FF3B3B'
     },
   ];
 
@@ -82,6 +80,7 @@ export default function HalfPieChart() {
         width: '100%',
       }}
     >
+      {/* Gráfico em meio círculo */}
       <PieChart width={300} height={150}>
         <Pie
           data={chartData}
@@ -100,39 +99,45 @@ export default function HalfPieChart() {
         </Pie>
       </PieChart>
 
+      {/* Mostrar apenas os valores totais de receitas e despesas */}
       <Stack direction="row" spacing={4} mt={2}>
-        {chartData.map((item) => (
-          <Box key={item.name} display="flex" alignItems="center">
-            <Box
-              sx={{
-                width: 12,
-                height: 12,
-                borderRadius: '50%',
-                backgroundColor: item.color,
-                marginRight: 1,
-              }}
-            />
-            <Typography variant="body2" color="text.primary">
-              {item.name}: {item.value.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL'
-              })}
-            </Typography>
-          </Box>
-        ))}
+        <Box textAlign="center">
+          <Typography variant="caption" color="text.secondary">
+            Receitas
+          </Typography>
+          <Typography variant="body1" color="success.main" fontWeight={600}>
+            {balanceData?.incomesAmountTotal.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+          </Typography>
+        </Box>
+
+        <Box textAlign="center">
+          <Typography variant="caption" color="text.secondary">
+            Despesas
+          </Typography>
+          <Typography variant="body1" color="error.main" fontWeight={600}>
+            {balanceData?.expensesAmountTotal.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+          </Typography>
+        </Box>
       </Stack>
 
-      {/* Exibir o saldo total */}
-      <Typography 
-        variant="subtitle1" 
+      {/* Mostrar o saldo total */}
+      <Typography
+        variant="subtitle1"
         mt={2}
         color={balanceData?.status === "POSITIVE" ? "success.main" : "error.main"}
+        fontWeight={700}
       >
         Saldo: {balanceData?.balance.toLocaleString('pt-BR', {
           style: 'currency',
           currency: 'BRL'
         })}
       </Typography>
-    </Box> 
+    </Box>
   );
 }

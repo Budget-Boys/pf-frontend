@@ -8,8 +8,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  CartesianGrid,
-  Text,
+  CartesianGrid
 } from "recharts";
 
 interface FinanceData {
@@ -52,24 +51,20 @@ const ChartBarBalance = () => {
           },
           {
             month: "Fev",
-            renda: financeData.incomesAmountTotal * 0.8,
-            despesas: financeData.expensesAmountTotal * 1.1,
+            renda: financeData.incomesAmountTotal * 0,
+            despesas: financeData.expensesAmountTotal * 0,
           },
           {
             month: "Mar",
-            renda: financeData.incomesAmountTotal * 1.2,
-            despesas: financeData.expensesAmountTotal * 0.9,
+            renda: financeData.incomesAmountTotal *  0,
+            despesas: financeData.expensesAmountTotal * 0,
           },
            {
             month: "Abr",
-            renda: financeData.incomesAmountTotal * 1.3,
-            despesas: financeData.expensesAmountTotal * 0.4,
+            renda: financeData.incomesAmountTotal * 0,
+            despesas: financeData.expensesAmountTotal * 0,
           },
-            {
-            month: "Mai",
-            renda: financeData.incomesAmountTotal * 0.5,
-            despesas: financeData.expensesAmountTotal * 2.4,
-          },
+
           // Adicione mais meses conforme necessário
         ];
         

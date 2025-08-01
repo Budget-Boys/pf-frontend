@@ -2,8 +2,9 @@
 
 .section_settigns
   @include flexIten(column, center)
-  padding: 2rem
+  padding: 0 .8rem
   gap: 2rem
+  width: 100%
 
   .container_menu_settigns
     width: 100%
@@ -11,33 +12,34 @@
     flex-wrap: wrap
     gap: 1rem
 
-    .menu_item                            // ✅ ADICIONADO
-      display: flex                      // ✅ Ícone e texto lado a lado
-      align-items: center                // ✅ Alinha verticalmente
-      gap: 0.5rem                        // ✅ Espaço entre ícone e texto
-      font-weight: 500                   // ✅ Estilo do texto
-      font-size: 1rem                    // ✅ Tamanho do texto
-      text-decoration: none              // ✅ Remove sublinhado
-      color: inherit                     // ✅ Mantém cor herdada
+    .menu_item
+      display: flex
+      align-items: center
+      gap: 0.5rem
+      font-weight: 500
+      font-size: 1rem
+      text-decoration: none
 
   .form_settigns
+    @include flexIten(column, center)
     gap: 1.5rem
-    padding: 2rem
     width: 100%
 
     .input_container
       @include flexIten(column, start)
-      gap: 0.5rem
-      margin-top: 2rem
-      
+      align-items: start
+      width: 100%
+      gap: 1rem
+
     .password_section
-      
-      gap: 1.5rem
-      
+      @include flexIten(column, start)
+      align-items: start
+      width: 100%
+      gap: 1rem
+
       h2
         text-align: center
-        margin-top: 2rem
-        
+
     .btn_settigns
       background-color: $pink
       width: 100%
@@ -50,35 +52,52 @@
       cursor: pointer
       margin-top: 2rem
 
-
 @media (min-width: 992px)
   .section_settigns
-    padding: 2rem 4rem
+    padding: 2rem 1.5rem
+    width: 100%
 
     .container_menu_settigns
       justify-content: flex-start
       gap: 2rem
 
-    .form_settigns
-      max-width: 700px
-
 @media (min-width: 1200px)
   .section_settigns
-    flex-direction: row
-    align-items: flex-start
-    justify-content: center
-    gap: 4rem
+    @include flexIten(row, space-between)
+    align-items: start
 
     .container_menu_settigns
       flex-direction: column
-      width: 240px
-      padding: 1.5rem
-      background: #f5f5f5
+      align-items: start
+      width: 25%
+      padding: 1rem
+      gap: 1.5rem
+      background-color: $gray
       border-radius: 25px
-      min-height: 100%
+
+      .menu_item
+        display: flex
+        align-items: center
+        background-color: $white_low_opacity
+        width: 100%
+        gap: 1rem
+        padding: 1.25rem
+        text-decoration: none
+        transition: all .3s ease
+        border-radius: 30px
+        border: 2px solid transparent
+
+        span, i
+          color: $blue
+
+        &:hover
+          border-color: $pink
+          span, i
+            color: $pink
 
     .form_settigns
-      max-width: 600px
-      width: 100%
+      width: 70%
+      align-items: end
 
-      
+      .btn_settigns
+        width: 50%
