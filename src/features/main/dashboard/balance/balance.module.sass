@@ -1,0 +1,19 @@
+@use '../../../../styles/index.sass' as *
+
+.section_balance
+    width: 100%
+
+    .container_balance
+        background-color: $gray
+        border-radius: 25px
+        padding: 1.25rem
+
+    .balance_summary
+        @include flexIten(row, space-between)
+        margin: 1rem 0
+
+@media (min-width: 992px)
+    .section_balance
+        .container_balance
+            width: 40%
+@media (min-width: 1200px)

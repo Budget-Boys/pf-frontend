@@ -2,6 +2,7 @@ export const POST = async (url: string, data: unknown) => {
   try {
     const response = await fetch(url, {
       method: "POST",
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
       },

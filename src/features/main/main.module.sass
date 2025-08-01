@@ -1,0 +1,37 @@
+@use '../../styles/index.sass' as *
+
+
+.main_dashbord
+    margin-top: 0
+    background-color: $white
+    min-height: 100vh
+    padding: 1rem
+    @include flexIten(row, center)
+    width: 100%
+    gap: 2rem
+
+    .container
+        @include flexIten(column, center)
+        gap: 1.5rem
+        width: 100%
+
+    .teste
+        display: none
+
+@media (min-width: 992px)
+    .main_dashbord
+        padding: 2rem
+        align-items: start
+
+@media (min-width: 1200px)
+    .main_dashbord
+        padding: 1.5rem
+
+        .container
+            width: 80%
+
+        .teste
+            height: 100vh
+            padding: 1.25rem
+            width: 20%
+            display: flex
