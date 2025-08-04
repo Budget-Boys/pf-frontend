@@ -2,13 +2,13 @@ import { GET } from "../../../../services/get";
 import style from "./history.module.sass";
 import { useEffect, useState } from "react";
 
-
 interface FinancialRecord {
   id: string;
   amount: number;
   category: string;
   creationDate: string;
   userId: string;
+  type: "expense" | "income";
 }
 
 const History: React.FC = () => {
@@ -16,7 +16,6 @@ const History: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Mapeamento completo das categorias
   const categoryMap: Record<string, string> = {
     "RENT": "Aluguel",
     "UTILITIES": "Serviços públicos",
@@ -47,27 +46,35 @@ const History: React.FC = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        
+        const userId = localStorage.getItem("userId");
+
         const [expensesResult, incomesResult] = await Promise.all([
-          GET("http://localhost:9000/api/finance/expenses"),
-          GET("http://localhost:9000/api/finance/incomes")
+          GET(`http://localhost:9000/api/finance/expenses/by-user/${userId}`),
+          GET(`http://localhost:9000/api/finance/incomes/by-user/${userId}`)
         ]);
 
         if (expensesResult.success && incomesResult.success) {
-          const combinedData = [
-            ...(expensesResult.data || []),
-            ...(incomesResult.data || [])
-          ].sort((a, b) => 
-            new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime()
+          const expenses = (expensesResult.data || []).map((item: any) => ({
+            ...item,
+            type: "expense",
+          }));
+          const incomes = (incomesResult.data || []).map((item: any) => ({
+            ...item,
+            type: "income",
+          }));
+
+          const combinedData: FinancialRecord[] = [...expenses, ...incomes].sort(
+            (a, b) =>
+              new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime()
           );
-          
+
           setRecords(combinedData);
         } else {
           setError("Erro ao carregar dados financeiros");
         }
       } catch (err) {
-        setError("Erro na conexão com o servidor");
         console.error("Fetch error:", err);
+        setError("Erro na conexão com o servidor");
       } finally {
         setLoading(false);
       }
@@ -76,21 +83,20 @@ const History: React.FC = () => {
     fetchData();
   }, []);
 
-  const formatCurrency = (value: number) => {
-    return value.toLocaleString('pt-BR', { 
-      style: 'currency', 
-      currency: 'BRL' 
+  const formatCurrency = (value: number) =>
+    value.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
     });
-  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('pt-BR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
+    return date.toLocaleDateString("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
@@ -124,7 +130,11 @@ const History: React.FC = () => {
             <tbody>
               {records.map((record) => (
                 <tr key={record.id}>
-                  <td className={record.amount >= 0 ? style.positive : style.negative}>
+                  <td
+                    className={
+                      record.type === "expense" ? style.negative : style.positive
+                    }
+                  >
                     {formatCurrency(record.amount)}
                   </td>
                   <td>{getCategoryName(record.category)}</td>

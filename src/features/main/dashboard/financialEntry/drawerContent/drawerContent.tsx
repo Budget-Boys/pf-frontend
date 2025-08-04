@@ -11,7 +11,7 @@ interface FinancialProps {
 
 const DrawerFinancialData: React.FC<FinancialProps> = ({ type }) => {
   const [form, setForm] = useState({
-    userId: "aa80b0eb-ec68-475c-8026-f4346854d75c",
+    userId: localStorage.getItem("userId"),
     amount: 0.0,
     category: "",
   });

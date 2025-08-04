@@ -28,6 +28,11 @@ const Login: React.FC = () => {
     if (result.success) {
       console.log("Sucesso ao cadastrar o usuario", result.message);
       console.log(form);
+
+      // Armazena ID e nome no localStorage
+      localStorage.setItem("userId", result.data.id);
+      localStorage.setItem("userName", result.data.name);
+
       navigate("/main/dashboard");
     } else {
       console.error("Erro ao registrar usuário:", result.message);

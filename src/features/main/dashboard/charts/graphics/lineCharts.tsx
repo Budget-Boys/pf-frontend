@@ -33,7 +33,7 @@ const ChartBarBalance = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:9000/api/finance/balance/aa80b0eb-ec68-475c-8026-f4346854d75c"
+          `http://localhost:9000/api/finance/balance/${localStorage.getItem("userId")}`
         );
         
         if (!response.ok) {

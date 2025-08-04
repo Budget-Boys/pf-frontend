@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import Input from "../../../components/input/input";
 import style from "./settigns.module.sass";
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import { PUT } from "../../../services/put";
 
 const Settigns: React.FC = () => {
   const [form, setForm] = useState({
@@ -13,10 +14,10 @@ const Settigns: React.FC = () => {
   });
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
+    const { id, value } = e.target;
     setForm((prev) => ({
       ...prev,
-      [name]: value,
+      [id]: value, 
     }));
   }
 
@@ -30,7 +31,16 @@ const Settigns: React.FC = () => {
         dataToSend[key] = value;
       }
     });
-    console.log("Dados a serem enviados:", dataToSend);
+    const result = await PUT(
+      `http://localhost:8080/users/${localStorage.getItem("userId")}`,
+      dataToSend
+    );
+    if (result.success) {
+      console.log("Dados a serem enviados:", dataToSend);
+    } else {
+      console.error("Erro ao atualizar usuário:", result.message);
+      console.log(dataToSend);
+    }
   }
 
   return (
