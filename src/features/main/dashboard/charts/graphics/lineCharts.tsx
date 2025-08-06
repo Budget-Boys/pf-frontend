@@ -8,8 +8,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  CartesianGrid,
-  Text,
+  CartesianGrid
 } from "recharts";
 
 interface FinanceData {
@@ -25,7 +24,10 @@ interface ChartData {
   despesas: number;
 }
 
-const ChartBarBalance = () => {
+interface ChartsProps {
+  reloadTrigger: number;
+}
+const ChartBarBalance: React.FC<ChartsProps> = ({ reloadTrigger }) => {
   const [data, setData] = useState<ChartData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -34,7 +36,7 @@ const ChartBarBalance = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:9000/api/finance/balance/aa80b0eb-ec68-475c-8026-f4346854d75c"
+          `http://localhost:9000/api/finance/balance/${localStorage.getItem("userId")}`
         );
         
         if (!response.ok) {
@@ -46,30 +48,26 @@ const ChartBarBalance = () => {
         // Formatando os dados para o gráfico por mês (exemplo com dados mockados)
         const formattedData: ChartData[] = [
           {
-            month: "Jan",
+            month: "Agosto",
             renda: financeData.incomesAmountTotal,
             despesas: financeData.expensesAmountTotal,
           },
           {
-            month: "Fev",
-            renda: financeData.incomesAmountTotal * 0.8,
-            despesas: financeData.expensesAmountTotal * 1.1,
+            month: "Setembro",
+            renda: financeData.incomesAmountTotal * 0,
+            despesas: financeData.expensesAmountTotal * 0,
           },
           {
-            month: "Mar",
-            renda: financeData.incomesAmountTotal * 1.2,
-            despesas: financeData.expensesAmountTotal * 0.9,
+            month: "Outubro",
+            renda: financeData.incomesAmountTotal *  0,
+            despesas: financeData.expensesAmountTotal * 0,
           },
            {
-            month: "Abr",
-            renda: financeData.incomesAmountTotal * 1.3,
-            despesas: financeData.expensesAmountTotal * 0.4,
+            month: "Novembro",
+            renda: financeData.incomesAmountTotal * 0,
+            despesas: financeData.expensesAmountTotal * 0,
           },
-            {
-            month: "Mai",
-            renda: financeData.incomesAmountTotal * 0.5,
-            despesas: financeData.expensesAmountTotal * 2.4,
-          },
+
           // Adicione mais meses conforme necessário
         ];
         
@@ -82,7 +80,7 @@ const ChartBarBalance = () => {
     };
 
     fetchData();
-  }, []);
+  }, [reloadTrigger]);
 
   if (loading) {
     return <div>Carregando gráfico...</div>;

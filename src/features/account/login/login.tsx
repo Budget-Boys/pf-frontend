@@ -4,6 +4,7 @@ import img from "../../../assets/images/banknotes.png";
 import { useState, type ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { POST } from "../../../services/post";
+import { toast } from "react-toastify";
 const Login: React.FC = () => {
   const [form, setForm] = useState({
     email: "",
@@ -28,9 +29,15 @@ const Login: React.FC = () => {
     if (result.success) {
       console.log("Sucesso ao cadastrar o usuario", result.message);
       console.log(form);
+
+      // Armazena ID e nome no localStorage
+      localStorage.setItem("userId", result.data.id);
+      localStorage.setItem("userName", result.data.name);
+
       navigate("/main/dashboard");
     } else {
       console.error("Erro ao registrar usuário:", result.message);
+      toast.error("Erro ao registrar: " + result.message);
       console.log(form);
     }
   }

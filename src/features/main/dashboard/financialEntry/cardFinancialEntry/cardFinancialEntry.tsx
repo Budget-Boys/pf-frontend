@@ -7,6 +7,7 @@ import DrawerFinancialData from "../drawerContent/drawerContent";
 interface FinancialEntryProps {
   text: string;
   icon: string;
+  onReload: () => void;
 }
 
 // Usando a tag HTML button diretamente com styled-components
@@ -84,7 +85,7 @@ const BtnCloseButton = styled.button`
   }
 `;
 
-const CardFinancialEntry: React.FC<FinancialEntryProps> = ({ text, icon }) => {
+const CardFinancialEntry: React.FC<FinancialEntryProps> = ({ text, icon, onReload }) => {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -102,13 +103,11 @@ const CardFinancialEntry: React.FC<FinancialEntryProps> = ({ text, icon }) => {
       {/* Drawer do MUI */}
       <Drawer anchor="bottom" open={open} onClose={toggleDrawer}>
         <section style={drawerStyle}>
-          {/* Fechar drawer do MUI */}
           <BtnCloseButton onClick={toggleDrawer}>
             <i className="fi fi-sr-minus-small"></i>
           </BtnCloseButton>
 
-          {/* Conteudo drawer do MUI */}
-          <DrawerFinancialData type={text} />
+          <DrawerFinancialData type={text} onReload={onReload} />
         </section>
       </Drawer>
     </>
