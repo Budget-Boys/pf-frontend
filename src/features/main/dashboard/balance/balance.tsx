@@ -2,7 +2,6 @@ import { GET } from "../../../../services/get";
 import style from "./balance.module.sass";
 import { useEffect, useState } from "react";
 
-
 interface BalanceData {
   status: "POSITIVE" | "NEGATIVE";
   expensesAmountTotal: number;
@@ -10,7 +9,11 @@ interface BalanceData {
   balance: number;
 }
 
-const Balance: React.FC = () => {
+interface BalanceProps {
+  reloadTrigger: number;
+}
+
+const Balance: React.FC<BalanceProps> = ({ reloadTrigger }) => {
   const [balanceData, setBalanceData] = useState<BalanceData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +23,9 @@ const Balance: React.FC = () => {
       try {
         setLoading(true);
         const result = await GET(
-          `http://localhost:9000/api/finance/balance/${localStorage.getItem("userId")}`
+          `http://localhost:9000/api/finance/balance/${localStorage.getItem(
+            "userId"
+          )}`
         );
 
         if (result.success) {
@@ -37,7 +42,7 @@ const Balance: React.FC = () => {
     };
 
     fetchBalanceData();
-  }, []);
+  }, [reloadTrigger]);
 
   const formatCurrency = (value: number) => {
     return value.toLocaleString("pt-BR", {

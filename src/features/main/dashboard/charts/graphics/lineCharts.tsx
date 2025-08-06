@@ -24,7 +24,10 @@ interface ChartData {
   despesas: number;
 }
 
-const ChartBarBalance = () => {
+interface ChartsProps {
+  reloadTrigger: number;
+}
+const ChartBarBalance: React.FC<ChartsProps> = ({ reloadTrigger }) => {
   const [data, setData] = useState<ChartData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -45,22 +48,22 @@ const ChartBarBalance = () => {
         // Formatando os dados para o gráfico por mês (exemplo com dados mockados)
         const formattedData: ChartData[] = [
           {
-            month: "Jan",
+            month: "Agosto",
             renda: financeData.incomesAmountTotal,
             despesas: financeData.expensesAmountTotal,
           },
           {
-            month: "Fev",
+            month: "Setembro",
             renda: financeData.incomesAmountTotal * 0,
             despesas: financeData.expensesAmountTotal * 0,
           },
           {
-            month: "Mar",
+            month: "Outubro",
             renda: financeData.incomesAmountTotal *  0,
             despesas: financeData.expensesAmountTotal * 0,
           },
            {
-            month: "Abr",
+            month: "Novembro",
             renda: financeData.incomesAmountTotal * 0,
             despesas: financeData.expensesAmountTotal * 0,
           },
@@ -77,7 +80,7 @@ const ChartBarBalance = () => {
     };
 
     fetchData();
-  }, []);
+  }, [reloadTrigger]);
 
   if (loading) {
     return <div>Carregando gráfico...</div>;

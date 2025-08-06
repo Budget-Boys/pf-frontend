@@ -9,8 +9,10 @@ interface BalanceData {
   incomesAmountTotal: number;
   balance: number;
 }
-
-export default function HalfPieChart() {
+interface ChartsProps {
+  reloadTrigger: number;
+}
+const HalfPieChart: React.FC<ChartsProps> = ({ reloadTrigger }) => {
   const [balanceData, setBalanceData] = useState<BalanceData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -37,7 +39,7 @@ export default function HalfPieChart() {
     };
 
     fetchBalanceData();
-  }, []);
+  }, [reloadTrigger]);
 
   const chartData = [
     {
@@ -141,3 +143,4 @@ export default function HalfPieChart() {
     </Box>
   );
 }
+export default HalfPieChart;

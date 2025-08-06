@@ -14,11 +14,27 @@ export const POST = async (url: string, data: unknown) => {
     if (response.ok) {
       return { success: true, data: json.data ?? json };
     } else {
-      console.error("Erro na requisição POST:", response.statusText);
-      return { success: false, message: `Erro: ${response.statusText}` };
+      let message = "Erro desconhecido.";
+
+      if (json.errors) {
+        if (typeof json.errors === "string") {
+          message = json.errors;
+        } else if (typeof json.errors === "object") {
+          // Concatena múltiplos erros (ex: email e senha)
+          message = Object.values(json.errors).join(" | ");
+        }
+      } else if (json.message) {
+        message = json.message;
+      } else {
+        message = response.statusText;
+      }
+
+      return { success: false, message };
     }
-  } catch (error) {
-    console.error("Erro na requisição:", error);
-    return { success: false, message: `Erro na requisição: ${error}` };
+  } catch (error: any) {
+    return {
+      success: false,
+      message: error?.message || "Erro inesperado na requisição",
+    };
   }
 };

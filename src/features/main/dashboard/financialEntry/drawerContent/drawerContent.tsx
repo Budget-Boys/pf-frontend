@@ -4,12 +4,15 @@ import GroupExpanses from "../groups/groupExpanse";
 import GroupIncome from "../groups/groupIncome";
 import style from "./drawerContent.module.sass";
 import { POST } from "../../../../../services/post";
+import { toast } from "react-toastify";
 
 interface FinancialProps {
   type: string;
+  onReload: () => void;
 }
 
-const DrawerFinancialData: React.FC<FinancialProps> = ({ type }) => {
+const DrawerFinancialData: React.FC<FinancialProps> = ({ type, onReload }) => {
+
   const [form, setForm] = useState({
     userId: localStorage.getItem("userId"),
     amount: 0.0,
@@ -34,18 +37,22 @@ const DrawerFinancialData: React.FC<FinancialProps> = ({ type }) => {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    // URL baseada no tipo
     const endpoint =
       type === "Renda"
         ? "http://localhost:9000/api/finance/incomes"
         : "http://localhost:9000/api/finance/expenses";
 
     const result = await POST(endpoint, form);
-
     if (result.success) {
-      console.log("Dados enviados com sucesso:", form);
+      toast.success("Dados enviados com sucesso!");
+      setForm({
+        userId: localStorage.getItem("userId"),
+        amount: 0.0,
+        category: "",
+      });
+      onReload();
     } else {
-      console.error("Erro ao registrar:", result.message);
+      toast.error("Erro ao registrar: " + result.message);
     }
   }
 
@@ -55,6 +62,7 @@ const DrawerFinancialData: React.FC<FinancialProps> = ({ type }) => {
         <div className={style.title_drawer}>
           <h1>Quanto você deseja adicionar?</h1>
         </div>
+
         <form
           className={style.form_financialData}
           onSubmit={handleSubmit}

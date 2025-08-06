@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GET } from "../../../../services/get";
 import style from "./history.module.sass";
 import { useEffect, useState } from "react";
@@ -10,36 +11,39 @@ interface FinancialRecord {
   userId: string;
   type: "expense" | "income";
 }
+interface HistoryProps {
+  reloadTrigger: number;
+}
 
-const History: React.FC = () => {
+const History: React.FC<HistoryProps> = ({ reloadTrigger }) => {
   const [records, setRecords] = useState<FinancialRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const categoryMap: Record<string, string> = {
-    "RENT": "Aluguel",
-    "UTILITIES": "Serviços públicos",
-    "GROCERIES": "Mercado",
-    "DINING_OUT": "Refeições fora",
-    "FUEL": "Combustível",
-    "SUPPLIES": "Suprimentos",
-    "SUBSCRIPTIONS": "Assinaturas",
-    "CLOTHING": "Roupas",
-    "PERSONAL_CARE": "Cuidados pessoais",
-    "HEALTH": "Saúde",
-    "ENTERTAINMENT": "Entretenimento",
-    "TRAVEL": "Viagem",
-    "HOBBIES": "Hobbies",
-    "PHONE": "Telefone",
-    "INTERNET": "Internet",
-    "SOFTWARE": "Software",
-    "CREDIT_CARD": "Cartão de crédito",
-    "PETS": "Pets",
-    "SALARY": "Salário",
-    "FREELANCE": "Freelance",
-    "BUSINESS": "Negócios",
-    "PENSION": "Pensão",
-    "INVESTMENTS": "Investimentos"
+    RENT: "Aluguel",
+    UTILITIES: "Serviços públicos",
+    GROCERIES: "Mercado",
+    DINING_OUT: "Refeições fora",
+    FUEL: "Combustível",
+    SUPPLIES: "Suprimentos",
+    SUBSCRIPTIONS: "Assinaturas",
+    CLOTHING: "Roupas",
+    PERSONAL_CARE: "Cuidados pessoais",
+    HEALTH: "Saúde",
+    ENTERTAINMENT: "Entretenimento",
+    TRAVEL: "Viagem",
+    HOBBIES: "Hobbies",
+    PHONE: "Telefone",
+    INTERNET: "Internet",
+    SOFTWARE: "Software",
+    CREDIT_CARD: "Cartão de crédito",
+    PETS: "Pets",
+    SALARY: "Salário",
+    FREELANCE: "Freelance",
+    BUSINESS: "Negócios",
+    PENSION: "Pensão",
+    INVESTMENTS: "Investimentos",
   };
 
   useEffect(() => {
@@ -50,7 +54,7 @@ const History: React.FC = () => {
 
         const [expensesResult, incomesResult] = await Promise.all([
           GET(`http://localhost:9000/api/finance/expenses/by-user/${userId}`),
-          GET(`http://localhost:9000/api/finance/incomes/by-user/${userId}`)
+          GET(`http://localhost:9000/api/finance/incomes/by-user/${userId}`),
         ]);
 
         if (expensesResult.success && incomesResult.success) {
@@ -63,9 +67,13 @@ const History: React.FC = () => {
             type: "income",
           }));
 
-          const combinedData: FinancialRecord[] = [...expenses, ...incomes].sort(
+          const combinedData: FinancialRecord[] = [
+            ...expenses,
+            ...incomes,
+          ].sort(
             (a, b) =>
-              new Date(b.creationDate).getTime() - new Date(a.creationDate).getTime()
+              new Date(b.creationDate).getTime() -
+              new Date(a.creationDate).getTime()
           );
 
           setRecords(combinedData);
@@ -81,7 +89,7 @@ const History: React.FC = () => {
     };
 
     fetchData();
-  }, []);
+  }, [reloadTrigger]);
 
   const formatCurrency = (value: number) =>
     value.toLocaleString("pt-BR", {
@@ -132,7 +140,9 @@ const History: React.FC = () => {
                 <tr key={record.id}>
                   <td
                     className={
-                      record.type === "expense" ? style.negative : style.positive
+                      record.type === "expense"
+                        ? style.negative
+                        : style.positive
                     }
                   >
                     {formatCurrency(record.amount)}

@@ -3,6 +3,7 @@ import Input from "../../../components/input/input";
 import style from "./settigns.module.sass";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { PUT } from "../../../services/put";
+import { toast } from "react-toastify";
 
 const Settigns: React.FC = () => {
   const [form, setForm] = useState({
@@ -17,7 +18,7 @@ const Settigns: React.FC = () => {
     const { id, value } = e.target;
     setForm((prev) => ({
       ...prev,
-      [id]: value, 
+      [id]: value,
     }));
   }
 
@@ -37,8 +38,10 @@ const Settigns: React.FC = () => {
     );
     if (result.success) {
       console.log("Dados a serem enviados:", dataToSend);
+      toast.success("Atualizado com sucesso!");
     } else {
       console.error("Erro ao atualizar usuário:", result.message);
+      toast.error("Erro ao editar: " + result.message);
       console.log(dataToSend);
     }
   }
@@ -59,10 +62,13 @@ const Settigns: React.FC = () => {
       <form className={style.form_settigns} onSubmit={handleSubmit}>
         {/* Nome */}
         <div className={style.input_container}>
-          <h2 className="text-lg font-semibold">Nome</h2>
-          <p className="text-sm text-gray-500 mb-1">
-            Isso permitirá que você envie ou altere seu nome exibido.
-          </p>
+          <div>
+            <h2 className="text-lg font-semibold">Nome</h2>
+            <p className="text-sm text-gray-500 mb-1">
+              Isso permitirá que você envie ou altere seu nome exibido.
+            </p>
+          </div>
+
           <Input
             placeholder="Nome:"
             icon="pig"
@@ -74,10 +80,13 @@ const Settigns: React.FC = () => {
 
         {/* Email */}
         <div className={style.input_container}>
-          <h2 className="text-lg font-semibold">Endereço de E-mail</h2>
-          <p className="text-sm text-gray-500 mb-1">
-            Este e-mail não pode ser alterado.
-          </p>
+          <div>
+            <h2 className="text-lg font-semibold">Endereço de E-mail</h2>
+            <p className="text-sm text-gray-500 mb-1">
+              Este e-mail pode ser alterado.
+            </p>
+          </div>
+
           <Input
             placeholder="E-mail:"
             icon="envelope"
@@ -89,10 +98,12 @@ const Settigns: React.FC = () => {
 
         {/* Telefone */}
         <div className={style.input_container}>
-          <h2 className="text-lg font-semibold">Cargo Atual</h2>
-          <p className="text-sm text-gray-500 mb-1">
-            Esta informação não será exibida em outros perfis.
-          </p>
+          <div>
+            <h2 className="text-lg font-semibold">Telefone</h2>
+            <p className="text-sm text-gray-500 mb-1">
+              Esta informação não será exibida em outros perfis.
+            </p>
+          </div>
           <Input
             placeholder="Telefone:"
             icon="mobile-button"
@@ -104,12 +115,13 @@ const Settigns: React.FC = () => {
 
         {/* Alterar senha */}
         <div className={style.password_section}>
-          <h2 className="text-lg font-semibold">Alterar Senha</h2>
-          <p className="text-sm text-gray-500 mb-4">
-            Você pode alterar sua senha a qualquer momento que achar necessário
-            por segurança.
-          </p>
-
+          <div>
+            <h2 className="text-lg font-semibold">Alterar Senha</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              Você pode alterar sua senha a qualquer momento que achar
+              necessário por segurança.
+            </p>
+          </div>
           <div className={style.input_container}>
             <Input
               placeholder="Senha atual:"
