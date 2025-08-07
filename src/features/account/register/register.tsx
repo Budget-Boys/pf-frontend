@@ -26,15 +26,29 @@ const Register: React.FC = () => {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    // 1. Cria o usuário
     const result = await POST("http://localhost:8080/users", form);
 
     if (result.success) {
-      console.log("Sucesso ao realizar o login", result.message);
-      console.log(form);
+      console.log("Sucesso ao criar conta", result.message);
+
+      // 2. Dispara e-mail de boas-vindas
+      const emailPayload = {
+        to: "guilhermevr.figueiredo@gmail.com",
+        subject: "Bem-vindo ao sistema!",
+        body: `Olá ${form.name}, sua conta foi criada com sucesso!`,
+      };
+
+      try {
+        await POST("http://localhost:7000/email", emailPayload);
+      } catch (err) {
+        console.error("Erro ao enviar e-mail:", err);
+      }
+
       navigate("/login");
     } else {
       console.error("Erro ao registrar usuário:", result.message);
-      console.log(form);
     }
   }
 
@@ -44,34 +58,34 @@ const Register: React.FC = () => {
         <h1> Começe a organizar suas finanças </h1>
       </div>
       <img src={img} alt="" />
-      <form action="" id="register-form" onSubmit={handleSubmit}>
+      <form id="register-form" onSubmit={handleSubmit}>
         <Input
-          placeholder={"Nome:"}
-          icon={"piggy-bank"}
-          type={"text"}
+          placeholder="Nome:"
+          icon="piggy-bank"
+          type="text"
           onChange={handleChange}
-          inputName={"name"}
+          inputName="name"
         />
         <Input
-          placeholder={"CPF:"}
-          icon={"digital-tachograph"}
-          type={"text"}
+          placeholder="CPF:"
+          icon="digital-tachograph"
+          type="text"
           onChange={handleChange}
-          inputName={"cpfcnpj"}
+          inputName="cpfcnpj"
         />
         <Input
-          placeholder={"E-mail:"}
-          icon={"envelope"}
-          type={"text"}
+          placeholder="E-mail:"
+          icon="envelope"
+          type="text"
           onChange={handleChange}
-          inputName={"email"}
+          inputName="email"
         />
         <Input
-          placeholder={"Senha:"}
-          icon={"vault"}
-          type={"password"}
+          placeholder="Senha:"
+          icon="vault"
+          type="password"
           onChange={handleChange}
-          inputName={"password"}
+          inputName="password"
         />
       </form>
     </div>
